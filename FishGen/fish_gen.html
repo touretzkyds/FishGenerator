@@ -13,9 +13,6 @@
             <div id="preview_canvas" class="column three">
                 <canvas width=500 height=300 id="canv"></canvas>
             </div>
-            <div id="image_canvas" style= "display: none">
-                <canvas width=500 height=300 id="draw_canv"></canvas>
-            </div>
             <div id="bodyShapes" class="column one" style="display: none;">
                 <div class="attribute-class">
                     <button id="body1" onclick="addBody1()"><img src="img/body1.png"></button>               
@@ -26,10 +23,13 @@
             </div>
             <div id="bodyColors" class="column one" style="display: none;">
                 <div class="attribute-class">
-                    <button></button>               
-                    <button></button>
-                    <button></button>
-                    <button></button>
+                    <button id="bodyCol1" onclick="chooseBRed()" style="background-color:red"> </button>              
+                    <button id="bodyCol2" onclick="chooseBBlue()" style="background-color:lightblue"> </button>
+                    <button id="bodyCol3" onclick="chooseBGreen()" style="background-color:greenyellow"> </button>
+                    <button id="bodyCol4" onclick="chooseBOrange()" style="background-color:orange"> </button>
+                    <button id="bodyCol5" onclick="chooseBPink()" style="background-color:pink"> </button>
+                    <button id="bodyCol6" onclick="chooseBPurple()" style="background-color:violet"> </button>
+                    <button id="bodyCol7" onclick="chooseBYellow()" style="background-color:yellow"> </button>
                 </div>
             </div>
             <div id="tailShapes" class="column one" style="display: none;">
@@ -38,7 +38,6 @@
                     <button id="tail2" onclick="addTail2()"><img src="img/tail2.png"></button>
                     <button id="tail3" onclick="addTail3()"><img src="img/tail3.png"></button>
                     <button id="tail4" onclick="addTail4()"><img src="img/tail4.png"></button>
-                    <button id="tail5" onclick="addTail5()"><img src="img/tail5.png"></button>
                 </div>
             </div>
             <div id="dfinShapes" class="column one" style="display: none;">
@@ -60,20 +59,23 @@
             </div>
             <div id="TFColors" class="column one" style="display: none;">
                 <div class="attribute-class">
-                    <button></button>               
-                    <button></button>
-                    <button></button>
-                    <button></button>
+                    <button id="tfCol1" onclick="chooseTRed()" style="background-color:red"> </button>              
+                    <button id="tfCol2" onclick="chooseTBlue()" style="background-color:lightblue"> </button>
+                    <button id="tfCol3" onclick="chooseTGreen()" style="background-color:greenyellow"> </button>
+                    <button id="tfCol4" onclick="chooseTOrange()" style="background-color:orange"> </button>
+                    <button id="tfCol5" onclick="chooseTPink()" style="background-color:pink"> </button>
+                    <button id="tfCol6" onclick="chooseTPurple()" style="background-color:violet"> </button>
+                    <button id="tfCol7" onclick="chooseTYellow()" style="background-color:yellow"> </button>
                 </div>
             </div>
             <div class="column two">
                 <div class="attribute-class">
-                    <button onclick="showBodyShapeOpts();">Body Shape</button>                
-                    <button onclick="showBodyColorOpts();">Body Color</button>                      
-                    <button onclick="showTailShapeOpts();">Tail Shape</button>
-                    <button onclick="showDFinShapeOpts();">Dorsal Fin Shape</button>
-                    <button onclick="showPFinShapeOpts();">Pectoral Fin Shape</button>
-                    <button onclick="showTFColorOpts();">Tail & Fin Color</button>
+                    <button id="bs" onclick="showBodyShapeOpts();">Body Shape</button>                
+                    <button id="bc" onclick="showBodyColorOpts();">Body Color</button>                      
+                    <button id="ts" onclick="showTailShapeOpts();">Tail Shape</button>
+                    <button id="ds" onclick="showDFinShapeOpts();">Dorsal Fin Shape</button>
+                    <button id="ps" onclick="showPFinShapeOpts();">Pectoral Fin Shape</button>
+                    <button id="tc" onclick="showTFColorOpts();">Tail & Fin Color</button>
                 </div>
             </div>
             <div id="nums" class="column four">
@@ -87,7 +89,10 @@
                 </div>
             </div>             
         </main>
-        <button class="generate_button" onclick="generateImages();" style="background-color:greenyellow;width:200px;height:80px;display:block;margin-left:auto;margin-right:auto;margin-top:100px;">Generate!</button>
+        <button class="generate_button" onclick="generateImages();" style="background-color:rgb(127, 236, 99);width:200px;height:80px;display:block;margin-left:auto;margin-right:auto;">Generate!</button>
+        <div id="progressBar" style="display:none">
+            <progress id="progress" value="0" max="0" style="background:greenyellow;width:200px;height:10px;display:block;margin-left:auto;margin-right:auto;"></progress>
+        </div>
         
     </div>
     <script src="external/jquery-3.6.1.min.js"></script>
@@ -107,12 +112,18 @@
     .backGround {
       width: 100%;
       height: 1828px;
-      background: rgba(94,139,255,1);
+      background: rgb(94, 180, 255);
       opacity: 1;
       position: relative;
       top: 0px;
       left: 0px;
       overflow: hidden;
+    }
+    .row {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 50px;
     }
     .column {
         float: right;
@@ -129,7 +140,7 @@
 
     .three {
         width: 500px;
-        margin-right: 15%;
+        margin-right: 20%;
     }
     .four {
         width: 40px;
@@ -149,9 +160,6 @@
         cursor:pointer;
         display: block;
     }
-    .numAttributes button:not(:last-child) {
-        border-bottom: none; 
-    }
 
     .attribute-class button {
         width: 100px;
@@ -163,9 +171,7 @@
         cursor:pointer;
         display: block;
     }
-    .attribute-class button:not(:last-child) {
-        border-bottom: none; 
-    }
+
     #body1 img {
         height: 30px;  
     }
