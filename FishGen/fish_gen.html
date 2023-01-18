@@ -14,7 +14,7 @@
                 <canvas width=500 height=300 id="canv"></canvas>
             </div>
             <div id="bodyShapes" class="column one" style="display: none;">
-                <div class="attribute-class">
+                <div class="attribute-value">
                     <button id="body1" onclick="addBody1()"><img src="img/body1.png"></button>               
                     <button id="body2" onclick="addBody2()"><img src="img/body2.png"></button>
                     <button id="body3" onclick="addBody3()"><img src="img/body3.png"></button>
@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div id="bodyColors" class="column one" style="display: none;">
-                <div class="attribute-class">
+                <div class="attribute-value">
                     <button id="bodyCol1" onclick="chooseBRed()" style="background-color:red"> </button>              
                     <button id="bodyCol2" onclick="chooseBBlue()" style="background-color:lightblue"> </button>
                     <button id="bodyCol3" onclick="chooseBGreen()" style="background-color:greenyellow"> </button>
@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div id="tailShapes" class="column one" style="display: none;">
-                <div class="attribute-class">
+                <div class="attribute-value">
                     <button id="tail1" onclick="addTail1()"><img src="img/tail1.png"></button>               
                     <button id="tail2" onclick="addTail2()"><img src="img/tail2.png"></button>
                     <button id="tail3" onclick="addTail3()"><img src="img/tail3.png"></button>
@@ -41,7 +41,7 @@
                 </div>
             </div>
             <div id="dfinShapes" class="column one" style="display: none;">
-                <div class="attribute-class">
+                <div class="attribute-value">
                     <button id="dfin1" onclick="addDfin1()"><img src="img/dfin1.png"></button>               
                     <button id="dfin2" onclick="addDfin2()"><img src="img/dfin2.png"></button>
                     <button id="dfin3" onclick="addDfin3()"><img src="img/dfin3.png"></button>
@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div id="pfinShapes" class="column one" style="display: none;">
-                <div class="attribute-class">
+                <div class="attribute-value">
                     <button id="pfin1" onclick="addPfin1()"><img src="img/pfin1.png"></button>               
                     <button id="pfin2" onclick="addPfin2()"><img src="img/pfin2.png"></button>
                     <button id="pfin3" onclick="addPfin3()"><img src="img/pfin3.png"></button>
@@ -58,7 +58,7 @@
                 </div>
             </div>
             <div id="TFColors" class="column one" style="display: none;">
-                <div class="attribute-class">
+                <div class="attribute-value">
                     <button id="tfCol1" onclick="chooseTRed()" style="background-color:red"> </button>              
                     <button id="tfCol2" onclick="chooseTBlue()" style="background-color:lightblue"> </button>
                     <button id="tfCol3" onclick="chooseTGreen()" style="background-color:greenyellow"> </button>
@@ -89,10 +89,15 @@
                 </div>
             </div>             
         </main>
-        <button class="generate_button" onclick="generateImages();" style="background-color:rgb(127, 236, 99);width:200px;height:80px;display:block;margin-left:auto;margin-right:auto;">Generate!</button>
-        <div id="progressBar" style="display:none">
-            <progress id="progress" value="0" max="0" style="background:greenyellow;width:200px;height:10px;display:block;margin-left:auto;margin-right:auto;"></progress>
+        <div>
+            <h2 id="warn" style="margin-left:25%;color:red;display:none;">You have to choose at least one value from each attribute class!</h2>
+            <h2 id="num" style="margin-left:40%;">You are generating 0 images</h2>
+            <button class="generate_button" onclick="generateImages();" style="background-color:rgb(127, 236, 99);width:200px;height:80px;display:block;margin-left:auto;margin-right:auto;">Generate!</button>
+            <div id="progressBar" style="display:none">
+                <progress id="progress" value="0" max="0" style="background:greenyellow;width:200px;height:10px;display:block;margin-left:auto;margin-right:auto;"></progress>
+            </div>
         </div>
+        
         
     </div>
     <script src="external/jquery-3.6.1.min.js"></script>
@@ -123,24 +128,23 @@
         display: block;
         margin-left: auto;
         margin-right: auto;
-        margin-top: 50px;
     }
     .column {
         float: right;
-        height: 500px; 
+        height: 350px; 
     }
 
     .one {
-        width: 110px;
+        width: 130px;
     }
 
     .two {
-        width: 100px;
+        width: 120px;
     }
 
     .three {
         width: 500px;
-        margin-right: 20%;
+        margin-right: 19%;
     }
     .four {
         width: 40px;
@@ -155,7 +159,7 @@
         height: 50px;
         position: relative;
         background: rgba(255,255,255,1);
-        border: 1px solid rgba(0,0,0,1);
+        border: 1px solid rgb(109, 109, 109);
         font-size: 5px;
         cursor:pointer;
         display: block;
@@ -166,17 +170,28 @@
         height: 50px;
         position: relative;
         background: rgba(255,255,255,1);
-        border: 1px solid rgba(0,0,0,1);
+        border: 1px solid rgb(109, 109, 109);
+        font-size: 5px;
+        cursor:pointer;
+        display: block;
+    }
+
+    .attribute-value button {
+        width: 120px;
+        height: 60px;
+        position: relative;
+        background: rgba(255,255,255,1);
+        border: 1px solid rgb(109, 109, 109);
         font-size: 5px;
         cursor:pointer;
         display: block;
     }
 
     #body1 img {
-        height: 30px;  
+        height: 40px;  
     }
     #body2 img {
-        height: 20px;  
+        height: 30px;  
     }
     #body3 img {
         height: 40px;  
@@ -186,48 +201,48 @@
     }
 
     #tail1 img {
-        width: 30px;  
+        width: 40px;  
     }
     #tail2 img {
-        width: 30px;  
+        width: 40px;  
     }
     #tail3 img {
-        width: 30px;  
+        width: 40px;  
     }
     #tail4 img {
-        width: 30px;  
+        width: 40px;  
     }
     #tail5 img {
-        width: 30px;  
+        width: 40px;  
     }
 
     #dfin1 img {
-        width: 30px;  
+        width: 40px;  
     }
     #dfin2 img {
-        width: 30px;  
+        width: 40px;  
     }
     #dfin3 img {
-        width: 30px;  
+        width: 40px;  
     }
     #dfin4 img {
-        width: 30px;  
+        width: 40px;  
     }
     #dfin5 img {
-        width: 30px;  
+        width: 40px;  
     }
 
     #pfin1 img {
-        width: 30px;  
+        width: 40px;  
     }
     #pfin2 img {
-        width: 30px;  
+        width: 40px;  
     }
     #pfin3 img {
-        width: 30px;  
+        width: 40px;  
     }
     #pfin4 img {
-        width: 30px;  
+        width: 40px;  
     }
 
     </style>
