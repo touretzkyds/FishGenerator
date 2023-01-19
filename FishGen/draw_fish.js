@@ -127,7 +127,7 @@ var preview = [
 ];
 
 function totalCount() {
-  totalC = bodyColors.length * bodyColors.length 
+  totalC = bodyShapes.length * bodyColors.length 
           * tailShapes.length * dfinShapes.length
           * pfinShapes.length * tfColors.length;
   document.getElementById('num').innerHTML = "You are generating " + totalC.toString() + " images";
