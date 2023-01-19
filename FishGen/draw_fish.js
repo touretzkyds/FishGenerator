@@ -887,7 +887,7 @@ function generateImageSpecs() {
 var urls = [];
 var count = 0;
 var zip = new JSZip();
-var folder = zip.folder("fish");
+var folder = zip.folder("Fish");
 var total = 0;
 //function generateOneFish() {
   //drawFish(fishes[count]);
