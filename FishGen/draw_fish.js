@@ -13,7 +13,7 @@ function showBodyShapeOpts() {
     let prev = document.getElementById(btns_shown);
     prev.style.display = "none";
     let prev_att = document.getElementById(btn_clicked);
-    prev_att.style.color = "rgb(109, 109, 109)";
+    prev_att.style.color = "black";
     prev_att.style.width = "100px";
   }
   btn_clicked = 'bs';
@@ -30,7 +30,7 @@ function showBodyColorOpts() {
     let prev = document.getElementById(btns_shown);
     prev.style.display = "none";
     let prev_att = document.getElementById(btn_clicked);
-    prev_att.style.color = "rgb(109, 109, 109)";
+    prev_att.style.color = "black";
     prev_att.style.width = "100px";
   }
   btn_clicked = 'bc';
@@ -47,7 +47,7 @@ function showTFColorOpts() {
     let prev = document.getElementById(btns_shown);
     prev.style.display = "none";
     let prev_att = document.getElementById(btn_clicked);
-    prev_att.style.color = "rgb(109, 109, 109)";
+    prev_att.style.color = "black";
     prev_att.style.width = "100px";
   }
   btn_clicked = 'tc';
@@ -64,7 +64,7 @@ function showTailShapeOpts() {
     let prev = document.getElementById(btns_shown);
     prev.style.display = "none";
     let prev_att = document.getElementById(btn_clicked);
-    prev_att.style.color = "rgb(109, 109, 109)";
+    prev_att.style.color = "black";
     prev_att.style.width = "100px";
   }
   btn_clicked = 'ts';
@@ -81,7 +81,7 @@ function showDFinShapeOpts() {
     let prev = document.getElementById(btns_shown);
     prev.style.display = "none";
     let prev_att = document.getElementById(btn_clicked);
-    prev_att.style.color = "rgb(109, 109, 109)";
+    prev_att.style.color = "black";
     prev_att.style.width = "100px";
   }
   btn_clicked = 'ds';
@@ -98,7 +98,7 @@ function showPFinShapeOpts() {
     let prev = document.getElementById(btns_shown);
     prev.style.display = "none";
     let prev_att = document.getElementById(btn_clicked);
-    prev_att.style.color = "rgb(109, 109, 109)";
+    prev_att.style.color = "black";
     prev_att.style.width = "100px";
   }
   btn_clicked = 'ps';
@@ -456,7 +456,7 @@ function addBody2() {
     btn.style.border = "5px solid greenyellow";
     bodyShapes.push('img/body/body2');
     preview[2] = { uri: 'img/body/body2', x: 100, y: 100, sw: 250, sh: 75 };
-    preview[1] = { uri: preview[1].uri, x: 340, y: 105, sw: 70, sh: 70 };
+    preview[1] = { uri: preview[1].uri, x: 335, y: 105, sw: 70, sh: 70 };
     preview[0] = { uri: preview[0].uri, x: 200, y: 70, sw: 40, sh: 40 };
     preview[3] = { uri: preview[3].uri, x: 200, y: 140, sw: 40, sh: 40 };
     var newView = updateColor(preview);
@@ -837,7 +837,7 @@ function generateImageSpecs() {
               for (let l = 0; l < pfinShapes.length; l ++) {
                 let current = [
                   { uri: dfinShapes[k], x: 200, y: 70, sw: 40, sh: 40 },
-                  { uri: tailShapes[j], x: 340, y: 105, sw: 70, sh: 70 },
+                  { uri: tailShapes[j], x: 335, y: 105, sw: 70, sh: 70 },
                   { uri: bodyShapes[i], x: 100, y: 100, sw: 250, sh: 75 },
                   { uri: pfinShapes[l], x: 200, y: 140, sw: 40, sh: 40 }
                 ];
@@ -889,16 +889,6 @@ var count = 0;
 var zip = new JSZip();
 var folder = zip.folder("Fish");
 var total = 0;
-//function generateOneFish() {
-  //drawFish(fishes[count]);
-  //setTimeout(function() {
-    //let url = canvas.toDataURL();
-    //let base64String = url.replace("data:image/png;base64,", "");
-    //console.log(url)
-    //urls.push(base64String);
-    //count ++; 
-  //}, 1000);
-//}
 
 const generateOneFish = () => {
   return new Promise((resolve, reject) => {   
@@ -915,6 +905,8 @@ const generateOneFish = () => {
 };
 
 function generateImages() {
+  document.getElementById("progress").value = 0;
+  document.getElementById("progress").max = 0;
   if (totalC == 0) {
     let warning = document.getElementById("warn");
     warning.style.display = "block";
@@ -928,7 +920,11 @@ function generateImages() {
       generateOneFish().then(urls => {
         if (count == fishes.length) {
           for (let i = 0; i < urls.length; i ++) {
-            let filenum = i.toString();
+            let digit = urls.length.toString().length;
+            let filenum = (i + 1).toString();
+            while (filenum.length < digit) {
+              filenum = "0" + filenum;
+            }
             let filename = "fish"+ filenum + ".png";
             folder.file(filename, urls[i], {base64: true}); 
             if (i == urls.length - 1) {

@@ -1,0 +1,162 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-size: 15px;
+}
+.backGround {
+    width: 100%;
+    height: 1828px;
+    background: rgb(94, 180, 255);
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+}
+.row {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.column {
+    float: right;
+    height: 350px; 
+}
+
+.one {
+    width: 130px;
+}
+
+.two {
+    width: 120px;
+}
+
+.three {
+    width: 500px;
+    margin-right: 19%;
+}
+.four {
+    width: 40px;
+}
+.row:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.numAttributes button {
+    width: 40px;
+    height: 50px;
+    position: relative;
+    background: rgba(255,255,255,1);
+    border: 1px solid rgb(109, 109, 109);
+    font-size: 14px;
+    cursor: pointer;
+    display: block;
+}
+
+.attribute-class button {
+    width: 100px;
+    height: 50px;
+    position: relative;
+    background: rgba(255,255,255,1);
+    border: 1px solid rgb(109, 109, 109);
+    font-size: 14px;
+    cursor: pointer;
+    display: block;
+}
+
+.attribute-value button {
+    width: 120px;
+    height: 60px;
+    position: relative;
+    background: rgba(255,255,255,1);
+    border: 1px solid rgb(109, 109, 109);
+    font-size: 14px;
+    cursor: pointer;
+    display: block;
+}
+
+.color button{
+    height: 43px;
+}
+
+.generate_button {
+    background-color: rgb(127, 236, 99);
+    width: auto;
+    height: auto;
+    padding: 20px 30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 20px;
+}
+
+progress {
+    background-color:greenyellow;
+    color: white;
+    width:200px;
+    height:20px;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: 20px;
+}
+
+#body1 img {
+    height: 40px;  
+}
+#body2 img {
+    height: 30px;  
+}
+#body3 img {
+    height: 40px;  
+}
+#body4 img {
+    height: 40px;  
+}
+
+#tail1 img {
+    width: 40px;  
+}
+#tail2 img {
+    width: 40px;  
+}
+#tail3 img {
+    width: 40px;  
+}
+#tail4 img {
+    width: 40px;  
+}
+#tail5 img {
+    width: 40px;  
+}
+
+#dfin1 img {
+    width: 40px;  
+}
+#dfin2 img {
+    width: 40px;  
+}
+#dfin3 img {
+    width: 40px;  
+}
+#dfin4 img {
+    width: 40px;  
+}
+#dfin5 img {
+    width: 40px;  
+}
+
+#pfin1 img {
+    width: 40px;  
+}
+#pfin2 img {
+    width: 40px;  
+}
+#pfin3 img {
+    width: 40px;  
+}
+#pfin4 img {
+    width: 40px;  
+}
