@@ -126,6 +126,15 @@ var preview = [
   { uri: 'img/pfin/pfin1', x: 170, y: 150, sw: 40, sh: 40 }
 ];
 
+function init() {
+  chooseBRed();
+  chooseTRed();
+  addBody1();
+  addTail1();
+  addDfin1();
+  addPfin1();
+}
+
 function totalCount() {
   totalC = bodyShapes.length * bodyColors.length 
           * tailShapes.length * dfinShapes.length
@@ -905,8 +914,9 @@ const generateOneFish = () => {
 };
 
 function generateImages() {
-  document.getElementById("progress").value = 0;
-  document.getElementById("progress").max = 0;
+  count = 0;
+  total = 0;
+  fishes = [];
   if (totalC == 0) {
     let warning = document.getElementById("warn");
     warning.style.display = "block";
