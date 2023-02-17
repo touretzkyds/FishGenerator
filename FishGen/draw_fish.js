@@ -9,7 +9,16 @@ function remove(arr, value) {
 var btn_clicked = '';
 var btns_shown = '';
 function showBodyShapeOpts() {
-  if (btns_shown != 'bodyShapes' && btns_shown != '') {
+  if (btns_shown == 'bodyShapes') {
+    let btn = document.getElementById('bs');
+    btn.style.color = "black";
+    btn.style.width = "100px";
+    let btns = document.getElementById('bodyShapes');
+    btns.style.display = "none";
+    btns_shown = '';
+    return;
+  }
+  if (btns_shown != '') {
     let prev = document.getElementById(btns_shown);
     prev.style.display = "none";
     let prev_att = document.getElementById(btn_clicked);
@@ -26,7 +35,16 @@ function showBodyShapeOpts() {
 }
 
 function showBodyColorOpts() {
-  if (btns_shown != 'bodyColors' && btns_shown != '') {
+  if (btns_shown == 'bodyColors') {
+    let btn = document.getElementById('bc');
+    btn.style.color = "black";
+    btn.style.width = "100px";
+    let btns = document.getElementById('bodyColors');
+    btns.style.display = "none";
+    btns_shown = '';
+    return;
+  }
+  if (btns_shown != '') {
     let prev = document.getElementById(btns_shown);
     prev.style.display = "none";
     let prev_att = document.getElementById(btn_clicked);
@@ -43,7 +61,16 @@ function showBodyColorOpts() {
 }
 
 function showTFColorOpts() {
-  if (btns_shown != 'TFColors' && btns_shown != '') {
+  if (btns_shown == 'TFColors') {
+    let btn = document.getElementById('tc');
+    btn.style.color = "black";
+    btn.style.width = "100px";
+    let btns = document.getElementById('TFColors');
+    btns.style.display = "none";
+    btns_shown = '';
+    return;
+  }
+  if (btns_shown != '') {
     let prev = document.getElementById(btns_shown);
     prev.style.display = "none";
     let prev_att = document.getElementById(btn_clicked);
@@ -60,7 +87,16 @@ function showTFColorOpts() {
 }
 
 function showTailShapeOpts() {
-  if (btns_shown != 'tailShapes' && btns_shown != '') {
+  if (btns_shown == 'tailShapes') {
+    let btn = document.getElementById('ts');
+    btn.style.color = "black";
+    btn.style.width = "100px";
+    let btns = document.getElementById('tailShapes');
+    btns.style.display = "none";
+    btns_shown = '';
+    return;
+  }
+  if (btns_shown != '') {
     let prev = document.getElementById(btns_shown);
     prev.style.display = "none";
     let prev_att = document.getElementById(btn_clicked);
@@ -77,7 +113,16 @@ function showTailShapeOpts() {
 }
 
 function showDFinShapeOpts() {
-  if (btns_shown != 'dfinShapes' && btns_shown != '') {
+  if (btns_shown == 'dfinShapes') {
+    let btn = document.getElementById('ds');
+    btn.style.color = "black";
+    btn.style.width = "100px";
+    let btns = document.getElementById('dfinShapes');
+    btns.style.display = "none";
+    btns_shown = '';
+    return;
+  }
+  if (btns_shown != '') {
     let prev = document.getElementById(btns_shown);
     prev.style.display = "none";
     let prev_att = document.getElementById(btn_clicked);
@@ -94,7 +139,16 @@ function showDFinShapeOpts() {
 }
 
 function showPFinShapeOpts() {
-  if (btns_shown != 'pfinShapes' && btns_shown != '') {
+  if (btns_shown == 'pfinShapes') {
+    let btn = document.getElementById('ps');
+    btn.style.color = "black";
+    btn.style.width = "100px";
+    let btns = document.getElementById('pfinShapes');
+    btns.style.display = "none";
+    btns_shown = '';
+    return;
+  }
+  if (btns_shown != '') {
     let prev = document.getElementById(btns_shown);
     prev.style.display = "none";
     let prev_att = document.getElementById(btn_clicked);
@@ -154,7 +208,13 @@ function updateColor(list) {
 // body colors
 function bcCount() {
   let c = bodyColors.length;
-  document.getElementById('nbc').innerHTML = c.toString();
+  if (c == 0) {
+    document.getElementById('nbc').innerHTML = '<b>' + c.toString() + '</b>';
+    document.getElementById('nbc').style.color = "red";
+  } else {
+    document.getElementById('nbc').innerHTML = c.toString();
+    document.getElementById('nbc').style.color = "black";
+  }
 }
 
 var bc1 = 0;
@@ -293,7 +353,13 @@ function chooseBYellow() {
 // tail&fin colors
 function tcCount() {
   let c = tfColors.length;
-  document.getElementById('ntfcs').innerHTML = c.toString();
+  if (c == 0) {
+    document.getElementById('ntfcs').innerHTML = '<b>' + c.toString() + '</b>';
+    document.getElementById('ntfcs').style.color = "red";
+  } else {
+    document.getElementById('ntfcs').innerHTML = c.toString();
+    document.getElementById('ntfcs').style.color = "black";
+  }
 }
 
 var tc1 = 0;
@@ -432,7 +498,13 @@ function chooseTYellow() {
 // body shapes
 function bsCount() {
   let c = bodyShapes.length;
-  document.getElementById('nbs').innerHTML = c.toString();
+  if (c == 0) {
+    document.getElementById('nbs').innerHTML = '<b>' + c.toString() + '</b>';
+    document.getElementById('nbs').style.color = "red";
+  } else {
+    document.getElementById('nbs').innerHTML = c.toString();
+    document.getElementById('nbs').style.color = "black";
+  }
 }
 
 var bs1 = 0;
@@ -525,7 +597,13 @@ function addBody4() {
 
 function tsCount() {
   let c = tailShapes.length;
-  document.getElementById("nts").innerHTML = c.toString();
+  if (c == 0) {
+    document.getElementById('nts').innerHTML = '<b>' + c.toString() + '</b>';
+    document.getElementById('nts').style.color = "red";
+  } else {
+    document.getElementById('nts').innerHTML = c.toString();
+    document.getElementById('nts').style.color = "black";
+  }
 }
 
 var ts1 = 0;
@@ -606,7 +684,13 @@ function addTail4() {
 
 function dfCount() {
   let c = dfinShapes.length;
-  document.getElementById("ndfs").innerHTML = c.toString();
+  if (c == 0) {
+    document.getElementById('ndfs').innerHTML = '<b>' + c.toString() + '</b>';
+    document.getElementById('ndfs').style.color = "red";
+  } else {
+    document.getElementById('ndfs').innerHTML = c.toString();
+    document.getElementById('ndfs').style.color = "black";
+  }
 }
 
 var df1 = 0;
@@ -707,7 +791,13 @@ function addDfin5() {
 
 function pfCount() {
   let c = pfinShapes.length;
-  document.getElementById("npfs").innerHTML = c.toString();
+  if (c == 0) {
+    document.getElementById('npfs').innerHTML = '<b>' + c.toString() + '</b>';
+    document.getElementById('npfs').style.color = "red";
+  } else {
+    document.getElementById('npfs').innerHTML = c.toString();
+    document.getElementById('npfs').style.color = "black";
+  }
 }
 
 var pf1 = 0;
