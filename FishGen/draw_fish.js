@@ -1,3 +1,35 @@
+var fishDict = {
+  'body1' : {
+      uri: 'img/body/body1',
+      x: 100, y: 65, sw: 180, sh: 180,
+      dfinx: 170, dfiny: 63, dfinsw: 40, dfinsh: 40,
+      tailx: 228, taily: 115, tailsw: 70, tailsh: 70,
+      pfinx: 170, pfiny: 150, pfinsw: 40, pfinsh: 40
+  },
+  'body2' : {
+    uri: 'img/body/body2',
+    x: 100, y: 100, sw: 250, sh: 75,
+    dfinx: 200, dfiny: 70, dfinsw: 40, dfinsh: 40,
+    tailx: 335, taily: 105, tailsw: 70, tailsh: 70,
+    pfinx: 200, pfiny: 140, pfinsw: 40, pfinsh: 40
+  },
+  'body3' : {
+    uri: 'img/body/body3',
+    x: 100, y: 90, sw: 220, sh: 110,
+    dfinx: 190, dfiny: 60, dfinsw: 40, dfinsh: 40,
+    tailx: 310, taily: 100, tailsw: 70, tailsh: 70,
+    pfinx: 190, pfiny: 145, pfinsw: 40, pfinsh: 40
+  },
+  'body4' : {
+    uri: 'img/body/body4',
+    x: 100, y: 90, sw: 240, sh: 110,
+    dfinx: 190, dfiny: 60, dfinsw: 40, dfinsh: 40,
+    tailx: 325, taily: 100, tailsw: 70, tailsh: 70,
+    pfinx: 195, pfiny: 145, pfinsw: 40, pfinsh: 40
+  }
+}
+
+
 function remove(arr, value) {
   var index = arr.indexOf(value);
   if (index > -1) {
@@ -170,24 +202,8 @@ var tailShapes = [];
 var dfinShapes = [];
 var pfinShapes = [];
 var tfColors = [];
-var bodyCol = "Red";
-var tfCol = "Red";
 var totalC = 0;
-var preview = [
-  { uri: 'img/dfin/dfin1', x: 170, y: 63, sw: 40, sh: 40 },
-  { uri: 'img/tail/tail1', x: 228, y: 115, sw: 70, sh: 70 },
-  { uri: 'img/body/body1', x: 100, y: 65, sw: 180, sh: 180 },
-  { uri: 'img/pfin/pfin1', x: 170, y: 150, sw: 40, sh: 40 }
-];
-
-function init() {
-  chooseBRed();
-  chooseTRed();
-  addBody1();
-  addTail1();
-  addDfin1();
-  addPfin1();
-}
+var preview = [];
 
 function totalCount() {
   totalC = bodyShapes.length * bodyColors.length 
@@ -196,15 +212,58 @@ function totalCount() {
   document.getElementById('num').innerHTML = "You are generating " + totalC.toString() + " images";
 }
 
-function updateColor(list) {
-  var newlist = [
-    { uri: list[0].uri + tfCol + '.png', x: list[0].x, y: list[0].y, sw: list[0].sw, sh: list[0].sh },
-    { uri: list[1].uri + tfCol + '.png', x: list[1].x, y: list[1].y, sw: list[1].sw, sh: list[1].sh },
-    { uri: list[2].uri + bodyCol + '.png', x: list[2].x, y: list[2].y, sw: list[2].sw, sh: list[2].sh },
-    { uri: list[3].uri + tfCol + '.png', x: list[3].x, y: list[3].y, sw: list[3].sw, sh: list[3].sh }
-  ]; 
+function updatePreview() {
+  var newlist = [];
+  if (bodyShapes.length == 0 || bodyColors.length == 0 || tfColors.length == 0) {
+    return newlist;
+  }
+  var body = bodyShapes[bodyShapes.length - 1];
+  var dfin_uri = '';
+  var pfin_uri = '';
+  var tail_uri = '';
+  var bodyCol = bodyColors[bodyColors.length - 1];
+  var tfCol = tfColors[tfColors.length - 1];
+  if (dfinShapes.length != 0) {
+    let dfin = dfinShapes[dfinShapes.length - 1];
+    dfin_uri = 'img/dfin/' + dfin; 
+  }
+  if (tailShapes.length != 0) {
+    let tail = tailShapes[tailShapes.length - 1];
+    tail_uri = 'img/tail/' + tail; 
+  }
+  if (pfinShapes.length != 0) {
+    let pfin = pfinShapes[pfinShapes.length - 1];
+    pfin_uri = 'img/pfin/' + pfin; 
+  }
+  if (dfin_uri != '') {
+    newlist.push({ uri: dfin_uri + tfCol + '.png', 
+                    x: fishDict[body].dfinx, 
+                    y: fishDict[body].dfiny, 
+                    sw: fishDict[body].dfinsw, 
+                    sh: fishDict[body].dfinsh });
+  }
+  if (tail_uri != '') {
+    newlist.push({ uri: tail_uri + tfCol + '.png', 
+                    x: fishDict[body].tailx, 
+                    y: fishDict[body].taily, 
+                    sw: fishDict[body].tailsw, 
+                    sh: fishDict[body].tailsh });
+  }
+  newlist.push({ uri: fishDict[body].uri + bodyCol + '.png', 
+                    x: fishDict[body].x, 
+                    y: fishDict[body].y, 
+                    sw: fishDict[body].sw, 
+                    sh: fishDict[body].sh });
+  if (pfin_uri != '') {
+    newlist.push({ uri: pfin_uri + tfCol + '.png', 
+                    x: fishDict[body].pfinx, 
+                    y: fishDict[body].pfiny, 
+                    sw: fishDict[body].pfinsw, 
+                    sh: fishDict[body].pfinsh });
+  }
   return newlist;
 }
+
 // body colors
 function bcCount() {
   let c = bodyColors.length;
@@ -224,13 +283,14 @@ function chooseBRed() {
     bc1 = 1;
     btn.style.border = "5px solid greenyellow";
     bodyColors.push('Red');
-    bodyCol = 'Red';
-    var newView = updateColor(preview);
-    drawFish(newView);
+    preview = updatePreview();
+    drawFish(preview);
   } else {
     bc1 = 0;
     btn.style.border = "1px solid rgb(109, 109, 109)";
     bodyColors = remove(bodyColors, 'Red');
+    preview = updatePreview();
+    drawFish(preview);
   }
   bcCount();
   totalCount();
@@ -243,13 +303,14 @@ function chooseBBlue() {
     bc2 = 1;
     btn.style.border = "5px solid greenyellow";
     bodyColors.push('Blue');
-    bodyCol = 'Blue';
-    var newView = updateColor(preview);
-    drawFish(newView);
+    preview = updatePreview();
+    drawFish(preview);
   } else {
     bc2 = 0;
     btn.style.border = "1px solid rgb(109, 109, 109)";
     bodyColors = remove(bodyColors, 'Blue');
+    preview = updatePreview();
+    drawFish(preview);
   }
   bcCount();
   totalCount();
@@ -262,13 +323,14 @@ function chooseBGreen() {
     bc3 = 1;
     btn.style.border = "5px solid greenyellow";
     bodyColors.push('Green');
-    bodyCol = 'Green';
-    var newView = updateColor(preview);
-    drawFish(newView);
+    preview = updatePreview();
+    drawFish(preview);
   } else {
     bc3 = 0;
     btn.style.border = "1px solid rgb(109, 109, 109)";
     bodyColors = remove(bodyColors, 'Green');
+    preview = updatePreview();
+    drawFish(preview);
   }
   bcCount();
   totalCount();
@@ -281,13 +343,14 @@ function chooseBOrange() {
     bc4 = 1;
     btn.style.border = "5px solid greenyellow";
     bodyColors.push('Orange');
-    bodyCol = 'Orange';
-    var newView = updateColor(preview);
-    drawFish(newView);
+    preview = updatePreview();
+    drawFish(preview);
   } else {
     bc4 = 0;
     btn.style.border = "1px solid rgb(109, 109, 109)";
     bodyColors = remove(bodyColors, 'Orange');
+    preview = updatePreview();
+    drawFish(preview);
   }
   bcCount();
   totalCount();
@@ -300,13 +363,14 @@ function chooseBPink() {
     bc5 = 1;
     btn.style.border = "5px solid greenyellow";
     bodyColors.push('Pink');
-    bodyCol = 'Pink';
-    var newView = updateColor(preview);
-    drawFish(newView);
+    preview = updatePreview();
+    drawFish(preview);
   } else {
     bc5 = 0;
     btn.style.border = "1px solid rgb(109, 109, 109)";
     bodyColors = remove(bodyColors, 'Pink');
+    preview = updatePreview();
+    drawFish(preview);
   }
   bcCount();
   totalCount();
@@ -319,13 +383,14 @@ function chooseBPurple() {
     bc6 = 1;
     btn.style.border = "5px solid greenyellow";
     bodyColors.push('Purple');
-    bodyCol = 'Purple';
-    var newView = updateColor(preview);
-    drawFish(newView);
+    preview = updatePreview();
+    drawFish(preview);
   } else {
     bc6 = 0;
     btn.style.border = "1px solid rgb(109, 109, 109)";
     bodyColors = remove(bodyColors, 'Purple');
+    preview = updatePreview();
+    drawFish(preview);
   }
   bcCount();
   totalCount();
@@ -338,13 +403,14 @@ function chooseBYellow() {
     bc7 = 1;
     btn.style.border = "5px solid greenyellow";
     bodyColors.push('Yellow');
-    bodyCol = 'Yellow';
-    var newView = updateColor(preview);
-    drawFish(newView);
+    preview = updatePreview();
+    drawFish(preview);
   } else {
     bc7 = 0;
     btn.style.border = "1px solid rgb(109, 109, 109)";
     bodyColors = remove(bodyColors, 'Yellow');
+    preview = updatePreview();
+    drawFish(preview);
   }
   bcCount();
   totalCount();
@@ -369,13 +435,14 @@ function chooseTRed() {
     tc1 = 1;
     btn.style.border = "5px solid greenyellow";
     tfColors.push('Red');
-    tfCol = 'Red';
-    var newView = updateColor(preview);
-    drawFish(newView);
+    preview = updatePreview();
+    drawFish(preview);
   } else {
     tc1 = 0;
     btn.style.border = "1px solid rgb(109, 109, 109)";
     tfColors = remove(tfColors, 'Red');
+    preview = updatePreview();
+    drawFish(preview);
   }
   tcCount();
   totalCount();
@@ -388,13 +455,14 @@ function chooseTBlue() {
     tc2 = 1;
     btn.style.border = "5px solid greenyellow";
     tfColors.push('Blue');
-    tfCol = 'Blue';
-    var newView = updateColor(preview);
-    drawFish(newView);
+    preview = updatePreview();
+    drawFish(preview);
   } else {
     tc2 = 0;
     btn.style.border = "1px solid rgb(109, 109, 109)";
     tfColors = remove(tfColors, 'Blue');
+    preview = updatePreview();
+    drawFish(preview);
   }
   tcCount();
   totalCount();
@@ -407,13 +475,14 @@ function chooseTGreen() {
     tc3 = 1;
     btn.style.border = "5px solid greenyellow";
     tfColors.push('Green');
-    tfCol = 'Green';
-    var newView = updateColor(preview);
-    drawFish(newView);
+    preview = updatePreview();
+    drawFish(preview);
   } else {
     tc3 = 0;
     btn.style.border = "1px solid rgb(109, 109, 109)";
     tfColors = remove(tfColors, 'Green');
+    preview = updatePreview();
+    drawFish(preview);
   }
   tcCount();
   totalCount();
@@ -426,13 +495,14 @@ function chooseTOrange() {
     tc4 = 1;
     btn.style.border = "5px solid greenyellow";
     tfColors.push('Orange');
-    tfCol = 'Orange';
-    var newView = updateColor(preview);
-    drawFish(newView);
+    preview = updatePreview();
+    drawFish(preview);
   } else {
     tc4 = 0;
     btn.style.border = "1px solid rgb(109, 109, 109)";
     tfColors = remove(tfColors, 'Orange');
+    preview = updatePreview();
+    drawFish(preview);
   }
   tcCount();
   totalCount();
@@ -445,13 +515,14 @@ function chooseTPink() {
     tc5 = 1;
     btn.style.border = "5px solid greenyellow";
     tfColors.push('Pink');
-    tfCol = 'Pink';
-    var newView = updateColor(preview);
-    drawFish(newView);
+    preview = updatePreview();
+    drawFish(preview);
   } else {
     tc5 = 0;
     btn.style.border = "1px solid rgb(109, 109, 109)";
     tfColors = remove(tfColors, 'Pink');
+    preview = updatePreview();
+    drawFish(preview);
   }
   tcCount();
   totalCount();
@@ -464,13 +535,14 @@ function chooseTPurple() {
     tc6 = 1;
     btn.style.border = "5px solid greenyellow";
     tfColors.push('Purple');
-    tfCol = 'Purple';
-    var newView = updateColor(preview);
-    drawFish(newView);
+    preview = updatePreview();
+    drawFish(preview);
   } else {
     tc6 = 0;
     btn.style.border = "1px solid rgb(109, 109, 109)";
     tfColors = remove(tfColors, 'Purple');
+    preview = updatePreview();
+    drawFish(preview);
   }
   tcCount();
   totalCount();
@@ -483,13 +555,14 @@ function chooseTYellow() {
     tc7 = 1;
     btn.style.border = "5px solid greenyellow";
     tfColors.push('Yellow');
-    tfCol = 'Yellow';
-    var newView = updateColor(preview);
-    drawFish(newView);
+    preview = updatePreview();
+    drawFish(preview);
   } else {
     tc7 = 0;
     btn.style.border = "1px solid rgb(109, 109, 109)";
     tfColors = remove(tfColors, 'Yellow');
+    preview = updatePreview();
+    drawFish(preview);
   }
   tcCount();
   totalCount();
@@ -513,17 +586,15 @@ function addBody1() {
   if (bs1 == 0) {
     bs1 = 1;
     btn.style.border = "5px solid greenyellow";
-    bodyShapes.push('img/body/body1');
-    preview[2] = { uri: 'img/body/body1', x: 100, y: 65, sw: 180, sh: 180 };
-    preview[1] = { uri: preview[1].uri, x: 228, y: 115, sw: 70, sh: 70 };
-    preview[0] = { uri: preview[0].uri, x: 170, y: 63, sw: 40, sh: 40 };
-    preview[3] = { uri: preview[3].uri, x: 170, y: 150, sw: 40, sh: 40 };
-    var newView = updateColor(preview);
-    drawFish(newView);
+    bodyShapes.push('body1');
+    preview = updatePreview();
+    drawFish(preview);
   } else {
     bs1 = 0;
     btn.style.border = "1px solid rgb(109, 109, 109)";
-    bodyShapes = remove(bodyShapes, 'img/body/body1');
+    bodyShapes = remove(bodyShapes, 'body1');
+    preview = updatePreview();
+    drawFish(preview);
   }
   bsCount();
   totalCount();
@@ -535,17 +606,15 @@ function addBody2() {
   if (bs2 == 0) {
     bs2 = 1;
     btn.style.border = "5px solid greenyellow";
-    bodyShapes.push('img/body/body2');
-    preview[2] = { uri: 'img/body/body2', x: 100, y: 100, sw: 250, sh: 75 };
-    preview[1] = { uri: preview[1].uri, x: 335, y: 105, sw: 70, sh: 70 };
-    preview[0] = { uri: preview[0].uri, x: 200, y: 70, sw: 40, sh: 40 };
-    preview[3] = { uri: preview[3].uri, x: 200, y: 140, sw: 40, sh: 40 };
-    var newView = updateColor(preview);
-    drawFish(newView);
+    bodyShapes.push('body2');
+    preview = updatePreview();
+    drawFish(preview);
   } else {
     bs2 = 0;
     btn.style.border = "1px solid rgb(109, 109, 109)";
-    bodyShapes = remove(bodyShapes, 'img/body/body2');
+    bodyShapes = remove(bodyShapes, 'body2');
+    preview = updatePreview();
+    drawFish(preview);
   }
   bsCount();
   totalCount();
@@ -557,17 +626,15 @@ function addBody3() {
   if (bs3 == 0) {
     bs3 = 1;
     btn.style.border = "5px solid greenyellow";
-    bodyShapes.push('img/body/body3');
-    preview[2] = { uri: 'img/body/body3', x: 100, y: 90, sw: 220, sh: 110 };
-    preview[1] = { uri: preview[1].uri, x: 310, y: 100, sw: 70, sh: 70 };
-    preview[0] = { uri: preview[0].uri, x: 190, y: 60, sw: 40, sh: 40 };
-    preview[3] = { uri: preview[3].uri, x: 190, y: 145, sw: 40, sh: 40 };
-    var newView = updateColor(preview);
-    drawFish(newView);
+    bodyShapes.push('body3');
+    preview = updatePreview();
+    drawFish(preview);
   } else {
     bs3 = 0;
     btn.style.border = "1px solid rgb(109, 109, 109)";
-    bodyShapes = remove(bodyShapes, 'img/body/body3');
+    bodyShapes = remove(bodyShapes, 'body3');
+    preview = updatePreview();
+    drawFish(preview);
   } 
   bsCount();
   totalCount();
@@ -579,17 +646,15 @@ function addBody4() {
   if (bs4 == 0) {
     bs4 = 1;
     btn.style.border = "5px solid greenyellow";
-    bodyShapes.push('img/body/body4');
-    preview[2] = { uri: 'img/body/body4', x: 100, y: 90, sw: 240, sh: 110 };
-    preview[1] = { uri: preview[1].uri, x: 325, y: 100, sw: 70, sh: 70 };
-    preview[0] = { uri: preview[0].uri, x: 190, y: 60, sw: 40, sh: 40 };
-    preview[3] = { uri: preview[3].uri, x: 195, y: 145, sw: 40, sh: 40 };
-    var newView = updateColor(preview);
-    drawFish(newView);
+    bodyShapes.push('body4');
+    preview = updatePreview();
+    drawFish(preview);
   } else {
     bs4 = 0;
     btn.style.border = "1px solid rgb(109, 109, 109)";
-    bodyShapes = remove(bodyShapes, 'img/body/body4');
+    bodyShapes = remove(bodyShapes, 'body4');
+    preview = updatePreview();
+    drawFish(preview);
   } 
   bsCount();
   totalCount();
@@ -612,14 +677,15 @@ function addTail1() {
   if (ts1 == 0) {
     ts1 = 1;
     btn.style.border = "5px solid greenyellow";
-    tailShapes.push('img/tail/tail1');
-    preview[1].uri = 'img/tail/tail1';
-    var newView = updateColor(preview);
-    drawFish(newView);
+    tailShapes.push('tail1');
+    preview = updatePreview();
+    drawFish(preview);
   } else {
     ts1 = 0;
     btn.style.border = "1px solid rgb(109, 109, 109)";
-    tailShapes = remove(tailShapes, 'img/tail/tail1');
+    tailShapes = remove(tailShapes, 'tail1');
+    preview = updatePreview();
+    drawFish(preview);
   }
   tsCount();
   totalCount();
@@ -631,14 +697,15 @@ function addTail2() {
   if (ts2 == 0) {
     ts2 = 1;
     btn.style.border = "5px solid greenyellow";
-    tailShapes.push('img/tail/tail2');
-    preview[1].uri = 'img/tail/tail2';
-    var newView = updateColor(preview);
-    drawFish(newView);
+    tailShapes.push('tail2');
+    preview = updatePreview();
+    drawFish(preview);
   } else {
     ts2 = 0;
     btn.style.border = "1px solid rgb(109, 109, 109)";
-    tailShapes = remove(tailShapes, 'img/tail/tail2');
+    tailShapes = remove(tailShapes, 'tail2');
+    preview = updatePreview();
+    drawFish(preview);
   }
   tsCount();
   totalCount();
@@ -650,14 +717,15 @@ function addTail3() {
   if (ts3 == 0) {
     ts3 = 1;
     btn.style.border = "5px solid greenyellow";
-    tailShapes.push('img/tail/tail3');
-    preview[1].uri = 'img/tail/tail3';
-    var newView = updateColor(preview);
-    drawFish(newView);
+    tailShapes.push('tail3');
+    preview = updatePreview();
+    drawFish(preview);
   } else {
     ts3 = 0;
     btn.style.border = "1px solid rgb(109, 109, 109)";
-    tailShapes = remove(tailShapes, 'img/tail/tail3');
+    tailShapes = remove(tailShapes, 'tail3');
+    preview = updatePreview();
+    drawFish(preview);
   }
   tsCount();
   totalCount();
@@ -669,14 +737,15 @@ function addTail4() {
   if (ts4 == 0) {
     ts4 = 1;
     btn.style.border = "5px solid greenyellow";
-    tailShapes.push('img/tail/tail4');
-    preview[1].uri = 'img/tail/tail4';
-    var newView = updateColor(preview);
-    drawFish(newView);
+    tailShapes.push('tail4');
+    preview = updatePreview();
+    drawFish(preview);
   } else {
     ts4 = 0;
     btn.style.border = "1px solid rgb(109, 109, 109)";
-    tailShapes = remove(tailShapes, 'img/tail/tail4');
+    tailShapes = remove(tailShapes, 'tail4');
+    preview = updatePreview();
+    drawFish(preview);
   }
   tsCount();
   totalCount();
@@ -699,14 +768,15 @@ function addDfin1() {
   if (df1 == 0) {
     df1 = 1;
     btn.style.border = "5px solid greenyellow";
-    dfinShapes.push('img/dfin/dfin1');
-    preview[0].uri = 'img/dfin/dfin1';
-    var newView = updateColor(preview);
-    drawFish(newView);
+    dfinShapes.push('dfin1');
+    preview = updatePreview();
+    drawFish(preview);
   } else {
     df1 = 0;
     btn.style.border = "1px solid rgb(109, 109, 109)";
-    dfinShapes = remove(dfinShapes, 'img/dfin/dfin1');
+    dfinShapes = remove(dfinShapes, 'dfin1');
+    preview = updatePreview();
+    drawFish(preview);
   }
   dfCount();
   totalCount();
@@ -718,14 +788,15 @@ function addDfin2() {
   if (df2 == 0) {
     df2 = 1;
     btn.style.border = "5px solid greenyellow";
-    dfinShapes.push('img/dfin/dfin2');
-    preview[0].uri = 'img/dfin/dfin2';
-    var newView = updateColor(preview);
-    drawFish(newView);
+    dfinShapes.push('dfin2');
+    preview = updatePreview();
+    drawFish(preview);
   } else {
     df2 = 0;
     btn.style.border = "1px solid rgb(109, 109, 109)";
-    dfinShapes = remove(dfinShapes, 'img/dfin/dfin2');
+    dfinShapes = remove(dfinShapes, 'dfin2');
+    preview = updatePreview();
+    drawFish(preview);
   }
   dfCount();
   totalCount();
@@ -737,14 +808,15 @@ function addDfin3() {
   if (df3 == 0) {
     df3 = 1;
     btn.style.border = "5px solid greenyellow";
-    dfinShapes.push('img/dfin/dfin3');
-    preview[0].uri = 'img/dfin/dfin3';
-    var newView = updateColor(preview);
-    drawFish(newView);
+    dfinShapes.push('dfin3');
+    preview = updatePreview();
+    drawFish(preview);
   } else {
     df3 = 0;
     btn.style.border = "1px solid rgb(109, 109, 109)";
-    dfinShapes = remove(dfinShapes, 'img/dfin/dfin3');
+    dfinShapes = remove(dfinShapes, 'dfin3');
+    preview = updatePreview();
+    drawFish(preview);
   }
   dfCount();
   totalCount();
@@ -756,14 +828,15 @@ function addDfin4() {
   if (df4 == 0) {
     df4 = 1;
     btn.style.border = "5px solid greenyellow";
-    dfinShapes.push('img/dfin/dfin4');
-    preview[0].uri = 'img/dfin/dfin4';
-    var newView = updateColor(preview);
-    drawFish(newView);
+    dfinShapes.push('dfin4');
+    preview = updatePreview();
+    drawFish(preview);
   } else {
     df4 = 0;
     btn.style.border = "1px solid rgb(109, 109, 109)";
-    dfinShapes = remove(dfinShapes, 'img/dfin/dfin4');
+    dfinShapes = remove(dfinShapes, 'dfin4');
+    preview = updatePreview();
+    drawFish(preview);
   }
   dfCount();
   totalCount();
@@ -775,14 +848,15 @@ function addDfin5() {
   if (df5 == 0) {
     df5 = 1;
     btn.style.border = "5px solid greenyellow";
-    dfinShapes.push('img/dfin/dfin5');
-    preview[0].uri = 'img/dfin/dfin5';
-    var newView = updateColor(preview);
-    drawFish(newView);
+    dfinShapes.push('dfin5');
+    preview = updatePreview();
+    drawFish(preview);
   } else {
     df5 = 0;
     btn.style.border = "1px solid rgb(109, 109, 109)";
-    dfinShapes = remove(dfinShapes, 'img/dfin/dfin5');
+    dfinShapes = remove(dfinShapes, 'dfin5');
+    preview = updatePreview();
+    drawFish(preview);
   }
   dfCount();
   totalCount();
@@ -806,14 +880,15 @@ function addPfin1() {
   if (pf1 == 0) {
     pf1 = 1;
     btn.style.border = "5px solid greenyellow";
-    pfinShapes.push('img/pfin/pfin1');
-    preview[3].uri = 'img/pfin/pfin1';
-    var newView = updateColor(preview);
-    drawFish(newView);
+    pfinShapes.push('pfin1');
+    preview = updatePreview();
+    drawFish(preview);
   } else {
     pf1 = 0;
     btn.style.border = "1px solid rgb(109, 109, 109)";
-    pfinShapes = remove(pfinShapes, 'img/pfin/pfin1');
+    pfinShapes = remove(pfinShapes, 'pfin1');
+    preview = updatePreview();
+    drawFish(preview);
   }
   pfCount();
   totalCount();
@@ -825,14 +900,15 @@ function addPfin2() {
   if (pf2 == 0) {
     pf2 = 1;
     btn.style.border = "5px solid greenyellow";
-    pfinShapes.push('img/pfin/pfin2');
-    preview[3].uri = 'img/pfin/pfin2';
-    var newView = updateColor(preview);
-    drawFish(newView);
+    pfinShapes.push('pfin2');
+    preview = updatePreview();
+    drawFish(preview);
   } else {
     pf2 = 0;
     btn.style.border = "1px solid rgb(109, 109, 109)";
-    pfinShapes = remove(pfinShapes, 'img/pfin/pfin2');
+    pfinShapes = remove(pfinShapes, 'pfin2');
+    preview = updatePreview();
+    drawFish(preview);
   }
   pfCount();
   totalCount();
@@ -844,14 +920,15 @@ function addPfin3() {
   if (pf3 == 0) {
     pf3 = 1;
     btn.style.border = "5px solid greenyellow";
-    pfinShapes.push('img/pfin/pfin3');
-    preview[3].uri = 'img/pfin/pfin3';
-    var newView = updateColor(preview);
-    drawFish(newView);
+    pfinShapes.push('pfin3');
+    preview = updatePreview();
+    drawFish(preview);
   } else {
     pf3 = 0;
     btn.style.border = "1px solid rgb(109, 109, 109)";
-    pfinShapes = remove(pfinShapes, 'img/pfin/pfin3');
+    pfinShapes = remove(pfinShapes, 'pfin3');
+    preview = updatePreview();
+    drawFish(preview);
   }
   pfCount();
   totalCount();
@@ -863,14 +940,15 @@ function addPfin4() {
   if (pf4 == 0) {
     pf4 = 1;
     btn.style.border = "5px solid greenyellow";
-    pfinShapes.push('img/pfin/pfin4');
-    preview[3].uri = 'img/pfin/pfin4';
-    var newView = updateColor(preview);
-    drawFish(newView);
+    pfinShapes.push('pfin4');
+    preview = updatePreview();
+    drawFish(preview);
   } else {
     pf4 = 0;
     btn.style.border = "1px solid rgb(109, 109, 109)";
-    pfinShapes = remove(pfinShapes, 'img/pfin/pfin4');
+    pfinShapes = remove(pfinShapes, 'pfin4');
+    preview = updatePreview();
+    drawFish(preview);
   }
   pfCount();
   totalCount();
@@ -907,74 +985,55 @@ async function drawFish(list) {
   }
 }
 
+function init() {
+  chooseBRed();
+  chooseTRed();
+  addBody1();
+  addTail1();
+  addDfin1();
+  addPfin1();
+}
+
+function getFishSpecs(body, dfin, tail, pfin, bodyCol, tfCol) {
+  var newlist = [];
+  let dfin_uri = 'img/dfin/' + dfin; 
+  let tail_uri = 'img/tail/' + tail; 
+  let pfin_uri = 'img/pfin/' + pfin; 
+  newlist.push({ uri: dfin_uri + tfCol + '.png', 
+                    x: fishDict[body].dfinx, 
+                    y: fishDict[body].dfiny, 
+                    sw: fishDict[body].dfinsw, 
+                    sh: fishDict[body].dfinsh });
+  newlist.push({ uri: tail_uri + tfCol + '.png', 
+                  x: fishDict[body].tailx, 
+                  y: fishDict[body].taily, 
+                  sw: fishDict[body].tailsw, 
+                  sh: fishDict[body].tailsh });
+  newlist.push({ uri: fishDict[body].uri + bodyCol + '.png', 
+                    x: fishDict[body].x, 
+                    y: fishDict[body].y, 
+                    sw: fishDict[body].sw, 
+                    sh: fishDict[body].sh });
+  newlist.push({ uri: pfin_uri + tfCol + '.png', 
+                    x: fishDict[body].pfinx, 
+                    y: fishDict[body].pfiny, 
+                    sw: fishDict[body].pfinsw, 
+                    sh: fishDict[body].pfinsh });
+  return newlist;
+}
+
 var fishes = [];
 function generateImageSpecs() {
   for (let i = 0; i < bodyColors.length; i ++) {
-    bodyCol = bodyColors[i];
     for (let j = 0; j < tfColors.length; j ++) {
-      tfCol = tfColors[j];
-      for (let i = 0; i < bodyShapes.length; i ++) {
-        if (bodyShapes[i] == 'img/body/body1') {
-          for (let j = 0; j < tailShapes.length; j ++) {
-            for (let k = 0; k < dfinShapes.length; k ++) {
-              for (let l = 0; l < pfinShapes.length; l ++) {
-                let current = [
-                  { uri: dfinShapes[k], x: 170, y: 63, sw: 40, sh: 40 },
-                  { uri: tailShapes[j], x: 228, y: 115, sw: 70, sh: 70 },
-                  { uri: bodyShapes[i], x: 100, y: 65, sw: 180, sh: 180 },
-                  { uri: pfinShapes[l], x: 170, y: 150, sw: 40, sh: 40 }
-                ];
-                let newlist = updateColor(current);              
-                fishes.push(newlist);
-              }
-            }
-          }
-        }
-        if (bodyShapes[i] == 'img/body/body2') {
-          for (let j = 0; j < tailShapes.length; j ++) {
-            for (let k = 0; k < dfinShapes.length; k ++) {
-              for (let l = 0; l < pfinShapes.length; l ++) {
-                let current = [
-                  { uri: dfinShapes[k], x: 200, y: 70, sw: 40, sh: 40 },
-                  { uri: tailShapes[j], x: 335, y: 105, sw: 70, sh: 70 },
-                  { uri: bodyShapes[i], x: 100, y: 100, sw: 250, sh: 75 },
-                  { uri: pfinShapes[l], x: 200, y: 140, sw: 40, sh: 40 }
-                ];
-                let newlist = updateColor(current);              
-                fishes.push(newlist);
-              }
-            }
-          }
-        }
-        if (bodyShapes[i] == 'img/body/body3') {
-          for (let j = 0; j < tailShapes.length; j ++) {
-            for (let k = 0; k < dfinShapes.length; k ++) {
-              for (let l = 0; l < pfinShapes.length; l ++) {
-                let current = [
-                  { uri: dfinShapes[k], x: 190, y: 60, sw: 40, sh: 40  },
-                  { uri: tailShapes[j], x: 310, y: 100, sw: 70, sh: 70 },
-                  { uri: bodyShapes[i], x: 100, y: 90, sw: 220, sh: 110 },
-                  { uri: pfinShapes[l], x: 190, y: 145, sw: 40, sh: 40 }
-                ];
-                let newlist = updateColor(current);              
-                fishes.push(newlist);
-              }
-            }
-          }
-        }
-        if (bodyShapes[i] == 'img/body/body4') {
-          for (let j = 0; j < tailShapes.length; j ++) {
-            for (let k = 0; k < dfinShapes.length; k ++) {
-              for (let l = 0; l < pfinShapes.length; l ++) {
-                let current = [
-                  { uri: dfinShapes[k], x: 190, y: 60, sw: 40, sh: 40 },
-                  { uri: tailShapes[j], x: 325, y: 100, sw: 70, sh: 70 },
-                  { uri: bodyShapes[i], x: 100, y: 90, sw: 240, sh: 110 },
-                  { uri: pfinShapes[l], x: 195, y: 145, sw: 40, sh: 40 }
-                ];
-                let newlist = updateColor(current);              
-                fishes.push(newlist);
-              }
+      for (let k = 0; k < bodyShapes.length; k ++) {
+        for (let m = 0; m < tailShapes.length; m ++) {
+          for (let n = 0; n < dfinShapes.length; n ++) {
+            for (let p = 0; p < pfinShapes.length; p ++) {
+              let newlist = getFishSpecs(bodyShapes[k], dfinShapes[n], 
+                                          tailShapes[m], pfinShapes[p], 
+                                          bodyColors[i], tfColors[j]);
+              fishes.push(newlist);
             }
           }
         }
