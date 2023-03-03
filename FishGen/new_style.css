@@ -1,0 +1,111 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'IBM Plex Mono';font-size: 22px;
+    font-size: 16px;
+    width: 100%;
+    height: auto;
+    background: beige;
+    opacity: 1;
+    position: relative;
+    margin: 0;
+}
+
+.heading {
+    margin-top: 20px;
+    margin-left: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 50px;
+}
+
+hr {
+    height: 1px;
+    background-color: black;
+    border: none;
+}
+
+.row {
+    margin-top: 0px;
+    margin-left: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+}
+
+.logo {
+    width: 100px;
+}
+
+.description {
+    width: 15%;
+    margin-right: 10px;
+}
+
+button {
+    font-family: 'IBM Plex Mono';font-size: 22px;
+    font-size: 15px;
+}
+
+.attribute-class {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.attribute-class button {
+    width: 200px;
+    height: 50px;
+    position: relative;
+    background: beige;
+    border: 1px solid black;
+    cursor: pointer;
+    display: block;
+    margin-bottom: -1px;
+    margin-right: 0px;
+}
+
+.attribute-value button {
+    width: 200px;
+    height: 90px;
+    padding: 10px;
+    position: relative;
+    background: beige;
+    border: 1px solid black;
+    cursor: pointer;
+    display: block;
+    margin-bottom: -1px;
+}
+
+.color button {
+    width: 200px;
+    height: 60px;
+    padding: 10px;
+    position: relative;
+    border: 1px solid black;
+    cursor: pointer;
+    display: block;
+}
+
+.imgOpt {
+    height: 34px;
+}
+
+.canvas {
+    margin-left: auto;
+    margin-right: 70px;
+}
+
+.generate {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.generate button {
+    background-color: rgb(184, 233, 155);
+}
