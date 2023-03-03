@@ -4,18 +4,20 @@
     <meta charset="UTF-8">
     <title>FishGen</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-</head>
+    <link href='https://fonts.googleapis.com/css?family=IBM Plex Mono' rel='stylesheet'></head>
 <body onload="init()">
     <div class="backGround">
-        <h1 style="margin-left:20px">Fish Generator</h1>
+        <div class="heading"> 
+            <img class="logo" src="img/fish.png">
+            <h1 style="margin-left:20px">Fish Generator</h1>
+        </div>
         <main id="content" class="row">
-            <div id="preview_canvas" class="column three">
+            <div id="preview_canvas" class="canvas">
                 <p>Canvas Preview</p>
                 <canvas width=500 height=300 id="canv"></canvas>
             </div>
             <div id="values">
-                <div id="bodyShapes" class="column one" style="display: none;">
+                <div id="bodyShapes" class="buttonsCol2" style="display: none;">
                     <p>Attribute Values</p>
                     <div class="attribute-value">
                         <button id="body1" onclick="addBody1()"><img src="img/body1.png"></button>               
@@ -24,7 +26,7 @@
                         <button id="body4" onclick="addBody4()"><img src="img/body4.png"></button>
                     </div>
                 </div>
-                <div id="bodyColors" class="column one" style="display: none;">
+                <div id="bodyColors" class="buttonsCol2" style="display: none;">
                     <p>Attribute Values</p>
                     <div class="attribute-value color">
                         <button id="bodyCol1" onclick="chooseBRed()" style="background-color:red"> </button>              
@@ -36,7 +38,7 @@
                         <button id="bodyCol7" onclick="chooseBYellow()" style="background-color:yellow"> </button>
                     </div>
                 </div>
-                <div id="tailShapes" class="column one" style="display: none;">
+                <div id="tailShapes" class="buttonsCol2" style="display: none;">
                     <p>Attribute Values</p>
                     <div class="attribute-value">
                         <button id="tail1" onclick="addTail1()"><img src="img/tail1.png"></button>               
@@ -45,7 +47,7 @@
                         <button id="tail4" onclick="addTail4()"><img src="img/tail4.png"></button>
                     </div>
                 </div>
-                <div id="dfinShapes" class="column one" style="display: none;">
+                <div id="dfinShapes" class="buttonsCol2" style="display: none;">
                     <p>Attribute Values</p>
                     <div class="attribute-value">
                         <button id="dfin1" onclick="addDfin1()"><img src="img/dfin1.png"></button>               
@@ -55,7 +57,7 @@
                         <button id="dfin5" onclick="addDfin5()"><img src="img/dfin5.png"></button>
                     </div>
                 </div>
-                <div id="pfinShapes" class="column one" style="display: none;">
+                <div id="pfinShapes" class="buttonsCol2" style="display: none;">
                     <p>Attribute Values</p>
                     <div class="attribute-value">
                         <button id="pfin1" onclick="addPfin1()"><img src="img/pfin1.png"></button>               
@@ -64,7 +66,7 @@
                         <button id="pfin4" onclick="addPfin4()"><img src="img/pfin4.png"></button>
                     </div>
                 </div>
-                <div id="TFColors" class="column one" style="display: none;">
+                <div id="TFColors" class="buttonsCol2" style="display: none;">
                     <p>Attribute Values</p>
                     <div class="attribute-value color">
                         <button id="tfCol1" onclick="chooseTRed()" style="background-color:red"> </button>              
@@ -77,7 +79,7 @@
                     </div>
                 </div>
             </div>         
-            <div id="attributes" class="column two">
+            <div id="attributes" class="buttonsCol1">
                 <p>Attribute Class</p>
                 <div class="attribute-class">
                     <button id="bs" onclick="showBodyShapeOpts();">Body Shape</button>                
