@@ -44,7 +44,7 @@ function showBodyShapeOpts() {
   if (btns_shown == 'bodyShapes') {
     let btn = document.getElementById('bs');
     btn.style.color = "black";
-    btn.style.width = "200px";
+    btn.style.width = "100px";
     let btns = document.getElementById('bodyShapes');
     btns.style.display = "none";
     btns_shown = '';
@@ -55,12 +55,12 @@ function showBodyShapeOpts() {
     prev.style.display = "none";
     let prev_att = document.getElementById(btn_clicked);
     prev_att.style.color = "black";
-    prev_att.style.width = "200px";
+    prev_att.style.width = "100px";
   }
   btn_clicked = 'bs';
   let btn = document.getElementById('bs');
   btn.style.color = "green";
-  btn.style.width = "220px";
+  btn.style.width = "120px";
   let btns = document.getElementById('bodyShapes');
   btns.style.display = "block";
   btns_shown = 'bodyShapes';
@@ -70,7 +70,7 @@ function showBodyColorOpts() {
   if (btns_shown == 'bodyColors') {
     let btn = document.getElementById('bc');
     btn.style.color = "black";
-    btn.style.width = "200px";
+    btn.style.width = "100px";
     let btns = document.getElementById('bodyColors');
     btns.style.display = "none";
     btns_shown = '';
@@ -81,12 +81,12 @@ function showBodyColorOpts() {
     prev.style.display = "none";
     let prev_att = document.getElementById(btn_clicked);
     prev_att.style.color = "black";
-    prev_att.style.width = "200px";
+    prev_att.style.width = "100px";
   }
   btn_clicked = 'bc';
   let btn = document.getElementById('bc');
   btn.style.color = "green";
-  btn.style.width = "220px";
+  btn.style.width = "120px";
   let btns = document.getElementById('bodyColors');
   btns.style.display = "block";
   btns_shown = 'bodyColors';
@@ -96,7 +96,7 @@ function showTFColorOpts() {
   if (btns_shown == 'TFColors') {
     let btn = document.getElementById('tc');
     btn.style.color = "black";
-    btn.style.width = "200px";
+    btn.style.width = "100px";
     let btns = document.getElementById('TFColors');
     btns.style.display = "none";
     btns_shown = '';
@@ -107,12 +107,12 @@ function showTFColorOpts() {
     prev.style.display = "none";
     let prev_att = document.getElementById(btn_clicked);
     prev_att.style.color = "black";
-    prev_att.style.width = "200px";
+    prev_att.style.width = "100px";
   }
   btn_clicked = 'tc';
   let btn = document.getElementById('tc');
   btn.style.color = "green";
-  btn.style.width = "220px";
+  btn.style.width = "120px";
   let btns = document.getElementById('TFColors');
   btns.style.display = "block";
   btns_shown = 'TFColors';
@@ -122,7 +122,7 @@ function showTailShapeOpts() {
   if (btns_shown == 'tailShapes') {
     let btn = document.getElementById('ts');
     btn.style.color = "black";
-    btn.style.width = "200px";
+    btn.style.width = "100px";
     let btns = document.getElementById('tailShapes');
     btns.style.display = "none";
     btns_shown = '';
@@ -133,12 +133,12 @@ function showTailShapeOpts() {
     prev.style.display = "none";
     let prev_att = document.getElementById(btn_clicked);
     prev_att.style.color = "black";
-    prev_att.style.width = "200px";
+    prev_att.style.width = "100px";
   }
   btn_clicked = 'ts';
   let btn = document.getElementById('ts');
   btn.style.color = "green";
-  btn.style.width = "220px";
+  btn.style.width = "120px";
   let btns = document.getElementById('tailShapes');
   btns.style.display = "block";
   btns_shown = 'tailShapes';
@@ -148,7 +148,7 @@ function showDFinShapeOpts() {
   if (btns_shown == 'dfinShapes') {
     let btn = document.getElementById('ds');
     btn.style.color = "black";
-    btn.style.width = "200px";
+    btn.style.width = "100px";
     let btns = document.getElementById('dfinShapes');
     btns.style.display = "none";
     btns_shown = '';
@@ -159,12 +159,12 @@ function showDFinShapeOpts() {
     prev.style.display = "none";
     let prev_att = document.getElementById(btn_clicked);
     prev_att.style.color = "black";
-    prev_att.style.width = "200px";
+    prev_att.style.width = "100px";
   }
   btn_clicked = 'ds';
   let btn = document.getElementById('ds');
   btn.style.color = "green";
-  btn.style.width = "220px";
+  btn.style.width = "120px";
   let btns = document.getElementById('dfinShapes');
   btns.style.display = "block";
   btns_shown = 'dfinShapes';
@@ -174,7 +174,7 @@ function showPFinShapeOpts() {
   if (btns_shown == 'pfinShapes') {
     let btn = document.getElementById('ps');
     btn.style.color = "black";
-    btn.style.width = "200px";
+    btn.style.width = "100px";
     let btns = document.getElementById('pfinShapes');
     btns.style.display = "none";
     btns_shown = '';
@@ -185,12 +185,12 @@ function showPFinShapeOpts() {
     prev.style.display = "none";
     let prev_att = document.getElementById(btn_clicked);
     prev_att.style.color = "black";
-    prev_att.style.width = "200px";
+    prev_att.style.width = "100px";
   }
   btn_clicked = 'ps';
   let btn = document.getElementById('ps');
   btn.style.color = "green";
-  btn.style.width = "220px";
+  btn.style.width = "120px";
   let btns = document.getElementById('pfinShapes');
   btns.style.display = "block";
   btns_shown = 'pfinShapes';
