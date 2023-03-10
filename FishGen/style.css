@@ -5,10 +5,16 @@
 body {
     font-family: 'IBM Plex Mono';font-size: 22px;
     font-size: 16px;
+    width: 100%;
+    height: auto;
+    background: beige;
+    opacity: 1;
+    position: relative;
+    margin: 0;
 }
 
 .heading {
-    margin-top: 30px;
+    margin-top: 20px;
     margin-left: 50px;
     display: flex;
     flex-direction: row;
@@ -16,163 +22,163 @@ body {
     gap: 50px;
 }
 
-.logo {
-    width: 100px;
+hr {
+    height: 1px;
+    background-color: black;
+    border: none;
+    margin-bottom: 0px;
 }
 
-.backGround {
-    width: 100%;
-    height: 1828px;
-    background: beige;
-    opacity: 1;
-    position: relative;
-    top: 0px;
-    left: 0px;
-    overflow: hidden;
-}
 .row {
-    display: block;
+    margin-top: 0px;
+    margin-left: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+}
+
+.logo {
+    width: 70px;
+}
+
+#contact {
     margin-left: auto;
-    margin-right: auto;
-}
-.column {
-    float: right;
-    height: 350px; 
+    margin-right: 50px;
 }
 
-.one {
-    width: 130px;
+.description {
+    width: 13%;
+    margin-right: 20px;
+    margin-top: 10px;
+    font-size: 15px;
 }
 
-.two {
-    width: 120px;
+.vl {
+    border-left: 1px solid black;
+    height: 500px;
+    margin-left: 0;
+    margin-right: 22px;
 }
 
-.three {
-    width: 500px;
-    margin-right: 19%;
+button {
+    font-family: 'IBM Plex Mono';font-size: 22px;
+    font-size: 15px;
 }
-.four {
-    width: 40px;
-}
-.row:after {
-    content: "";
-    display: block;
-    clear: both;
-}
-.numAttributes button {
-    width: 40px;
-    height: 50px;
-    position: relative;
-    background: rgba(255,255,255,1);
-    border: 1px solid rgb(109, 109, 109);
-    font-size: 14px;
-    cursor: pointer;
-    display: block;
+
+.attribute-class {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    margin-top: 10px;
 }
 
 .attribute-class button {
-    width: 100px;
+    width: 210px;
     height: 50px;
     position: relative;
-    background: rgba(255,255,255,1);
-    border: 1px solid rgb(109, 109, 109);
-    font-size: 14px;
+    text-align: left;
+    padding: 10px;
+    background: beige;
+    border: 1px solid black;
     cursor: pointer;
-    display: block;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: -1px;
+    margin-right: 0px;
+}
+
+.attribute-values {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    margin-top: 10px;
 }
 
 .attribute-value button {
-    width: 120px;
-    height: 60px;
+    width: 200px;
+    height: 90px;
+    padding: 10px;
     position: relative;
-    background: rgba(255,255,255,1);
-    border: 1px solid rgb(109, 109, 109);
-    font-size: 14px;
+    background: beige;
+    border: 1px solid black;
+    cursor: pointer;
+    display: block;
+    margin-bottom: -1px;
+}
+
+.color button {
+    width: 200px;
+    height: 60px;
+    padding: 10px;
+    position: relative;
+    border: 1px solid black;
     cursor: pointer;
     display: block;
 }
 
-.color button{
-    height: 43px;
+.imgOpt {
+    height: 34px;
 }
 
-.generate_button {
-    background-color: rgb(127, 236, 99);
-    width: auto;
-    height: auto;
-    padding: 20px 30px;
-    display: block;
+#body1img {
+    height: 55px;
+    margin-bottom: 0;
+}
+
+#body1p {
+    margin-top: 0;
+}
+
+#body3img {
+    width: 80px;
+    height: 40px;
+    margin-bottom: 0;
+}
+
+#body3p {
+    margin-top: 10px;
+}
+
+.att_num {
     margin-left: auto;
-    margin-right: auto;
-    font-size: 20px;
+    margin-right: 0px;
+}
+
+.canvas {
+    margin-left: auto;
+    margin-right: 50px;
+    margin-top: 10px;
+}
+
+.generate {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.generate button {
+    background-color: rgb(184, 233, 155);
+    height: 40px;
+}
+
+.warn {
+    display: none;
+    color: rgb(221, 84, 84);
 }
 
 progress {
-    background-color:greenyellow;
-    color: white;
-    width:200px;
-    height:20px;
-    display:block;
-    margin-left:auto;
-    margin-right:auto;
-    margin-top: 20px;
+    border: none;
+    width: 500px;
+    background: white;
+    margin-top: 10px;
 }
 
-#body1 img {
-    height: 40px;  
-}
-#body2 img {
-    height: 30px;  
-}
-#body3 img {
-    height: 40px;  
-}
-#body4 img {
-    height: 40px;  
+progress::-webkit-progress-value {
+    background: rgb(184, 233, 155) !important;
 }
 
-#tail1 img {
-    width: 40px;  
-}
-#tail2 img {
-    width: 40px;  
-}
-#tail3 img {
-    width: 40px;  
-}
-#tail4 img {
-    width: 40px;  
-}
-#tail5 img {
-    width: 40px;  
-}
-
-#dfin1 img {
-    width: 40px;  
-}
-#dfin2 img {
-    width: 40px;  
-}
-#dfin3 img {
-    width: 40px;  
-}
-#dfin4 img {
-    width: 40px;  
-}
-#dfin5 img {
-    width: 40px;  
-}
-
-#pfin1 img {
-    width: 40px;  
-}
-#pfin2 img {
-    width: 40px;  
-}
-#pfin3 img {
-    width: 40px;  
-}
-#pfin4 img {
-    width: 40px;  
+progress::-webkit-progress-bar {
+    background: white;
 }

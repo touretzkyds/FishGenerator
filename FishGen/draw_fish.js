@@ -43,8 +43,8 @@ var btns_shown = '';
 function showBodyShapeOpts() {
   if (btns_shown == 'bodyShapes') {
     let btn = document.getElementById('bs');
-    btn.style.color = "black";
-    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
+    btn.style.width = "210px";
     let btns = document.getElementById('bodyShapes');
     btns.style.display = "none";
     btns_shown = '';
@@ -54,13 +54,13 @@ function showBodyShapeOpts() {
     let prev = document.getElementById(btns_shown);
     prev.style.display = "none";
     let prev_att = document.getElementById(btn_clicked);
-    prev_att.style.color = "black";
-    prev_att.style.width = "200px";
+    prev_att.style.fontWeight = "normal";
+    prev_att.style.width = "210px";
   }
   btn_clicked = 'bs';
   let btn = document.getElementById('bs');
-  btn.style.color = "green";
-  btn.style.width = "220px";
+  btn.style.fontWeight = "bold";
+  btn.style.width = "230px";
   let btns = document.getElementById('bodyShapes');
   btns.style.display = "block";
   btns_shown = 'bodyShapes';
@@ -69,8 +69,8 @@ function showBodyShapeOpts() {
 function showBodyColorOpts() {
   if (btns_shown == 'bodyColors') {
     let btn = document.getElementById('bc');
-    btn.style.color = "black";
-    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
+    btn.style.width = "210px";
     let btns = document.getElementById('bodyColors');
     btns.style.display = "none";
     btns_shown = '';
@@ -80,13 +80,13 @@ function showBodyColorOpts() {
     let prev = document.getElementById(btns_shown);
     prev.style.display = "none";
     let prev_att = document.getElementById(btn_clicked);
-    prev_att.style.color = "black";
-    prev_att.style.width = "200px";
+    prev_att.style.fontWeight = "normal";
+    prev_att.style.width = "210px";
   }
   btn_clicked = 'bc';
   let btn = document.getElementById('bc');
-  btn.style.color = "green";
-  btn.style.width = "220px";
+  btn.style.fontWeight = "bold";
+  btn.style.width = "230px";
   let btns = document.getElementById('bodyColors');
   btns.style.display = "block";
   btns_shown = 'bodyColors';
@@ -95,8 +95,8 @@ function showBodyColorOpts() {
 function showTFColorOpts() {
   if (btns_shown == 'TFColors') {
     let btn = document.getElementById('tc');
-    btn.style.color = "black";
-    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
+    btn.style.width = "210px";
     let btns = document.getElementById('TFColors');
     btns.style.display = "none";
     btns_shown = '';
@@ -106,13 +106,13 @@ function showTFColorOpts() {
     let prev = document.getElementById(btns_shown);
     prev.style.display = "none";
     let prev_att = document.getElementById(btn_clicked);
-    prev_att.style.color = "black";
-    prev_att.style.width = "200px";
+    prev_att.style.fontWeight = "normal";
+    prev_att.style.width = "210px";
   }
   btn_clicked = 'tc';
   let btn = document.getElementById('tc');
-  btn.style.color = "green";
-  btn.style.width = "220px";
+  btn.style.fontWeight = "bold";
+  btn.style.width = "230px";
   let btns = document.getElementById('TFColors');
   btns.style.display = "block";
   btns_shown = 'TFColors';
@@ -121,8 +121,8 @@ function showTFColorOpts() {
 function showTailShapeOpts() {
   if (btns_shown == 'tailShapes') {
     let btn = document.getElementById('ts');
-    btn.style.color = "black";
-    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
+    btn.style.width = "210px";
     let btns = document.getElementById('tailShapes');
     btns.style.display = "none";
     btns_shown = '';
@@ -132,13 +132,13 @@ function showTailShapeOpts() {
     let prev = document.getElementById(btns_shown);
     prev.style.display = "none";
     let prev_att = document.getElementById(btn_clicked);
-    prev_att.style.color = "black";
-    prev_att.style.width = "200px";
+    prev_att.style.fontWeight = "normal";
+    prev_att.style.width = "210px";
   }
   btn_clicked = 'ts';
   let btn = document.getElementById('ts');
-  btn.style.color = "green";
-  btn.style.width = "220px";
+  btn.style.fontWeight = "bold";
+  btn.style.width = "230px";
   let btns = document.getElementById('tailShapes');
   btns.style.display = "block";
   btns_shown = 'tailShapes';
@@ -147,8 +147,8 @@ function showTailShapeOpts() {
 function showDFinShapeOpts() {
   if (btns_shown == 'dfinShapes') {
     let btn = document.getElementById('ds');
-    btn.style.color = "black";
-    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
+    btn.style.width = "210px";
     let btns = document.getElementById('dfinShapes');
     btns.style.display = "none";
     btns_shown = '';
@@ -158,13 +158,13 @@ function showDFinShapeOpts() {
     let prev = document.getElementById(btns_shown);
     prev.style.display = "none";
     let prev_att = document.getElementById(btn_clicked);
-    prev_att.style.color = "black";
-    prev_att.style.width = "200px";
+    prev_att.style.fontWeight = "normal";
+    prev_att.style.width = "210px";
   }
   btn_clicked = 'ds';
   let btn = document.getElementById('ds');
-  btn.style.color = "green";
-  btn.style.width = "220px";
+  btn.style.fontWeight = "bold";
+  btn.style.width = "230px";
   let btns = document.getElementById('dfinShapes');
   btns.style.display = "block";
   btns_shown = 'dfinShapes';
@@ -173,8 +173,8 @@ function showDFinShapeOpts() {
 function showPFinShapeOpts() {
   if (btns_shown == 'pfinShapes') {
     let btn = document.getElementById('ps');
-    btn.style.color = "black";
-    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
+    btn.style.width = "210px";
     let btns = document.getElementById('pfinShapes');
     btns.style.display = "none";
     btns_shown = '';
@@ -184,13 +184,13 @@ function showPFinShapeOpts() {
     let prev = document.getElementById(btns_shown);
     prev.style.display = "none";
     let prev_att = document.getElementById(btn_clicked);
-    prev_att.style.color = "black";
-    prev_att.style.width = "200px";
+    prev_att.style.fontWeight = "normal";
+    prev_att.style.width = "210px";
   }
   btn_clicked = 'ps';
   let btn = document.getElementById('ps');
-  btn.style.color = "green";
-  btn.style.width = "220px";
+  btn.style.fontWeight = "bold";
+  btn.style.width = "230px";
   let btns = document.getElementById('pfinShapes');
   btns.style.display = "block";
   btns_shown = 'pfinShapes';
@@ -209,7 +209,7 @@ function totalCount() {
   totalC = bodyShapes.length * bodyColors.length 
           * tailShapes.length * dfinShapes.length
           * pfinShapes.length * tfColors.length;
-  document.getElementById('num').innerHTML = "You are generating " + totalC.toString() + " images";
+  document.getElementById("num").innerHTML = "You are generating " + totalC.toString() + " images";
 }
 
 function updatePreview() {
@@ -281,13 +281,15 @@ function chooseBRed() {
   let btn = document.getElementById('bodyCol1');
   if (bc1 == 0) {
     bc1 = 1;
-    btn.style.border = "5px solid greenyellow";
+    btn.style.width = "220px";
+    btn.style.fontWeight = "bold";
     bodyColors.push('Red');
     preview = updatePreview();
     drawFish(preview);
   } else {
     bc1 = 0;
-    btn.style.border = "1px solid rgb(109, 109, 109)";
+    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
     bodyColors = remove(bodyColors, 'Red');
     preview = updatePreview();
     drawFish(preview);
@@ -301,13 +303,15 @@ function chooseBBlue() {
   let btn = document.getElementById('bodyCol2');
   if (bc2 == 0) {
     bc2 = 1;
-    btn.style.border = "5px solid greenyellow";
+    btn.style.width = "220px";
+    btn.style.fontWeight = "bold";
     bodyColors.push('Blue');
     preview = updatePreview();
     drawFish(preview);
   } else {
     bc2 = 0;
-    btn.style.border = "1px solid rgb(109, 109, 109)";
+    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
     bodyColors = remove(bodyColors, 'Blue');
     preview = updatePreview();
     drawFish(preview);
@@ -321,13 +325,15 @@ function chooseBGreen() {
   let btn = document.getElementById('bodyCol3');
   if (bc3 == 0) {
     bc3 = 1;
-    btn.style.border = "5px solid greenyellow";
+    btn.style.width = "220px";
+    btn.style.fontWeight = "bold";
     bodyColors.push('Green');
     preview = updatePreview();
     drawFish(preview);
   } else {
     bc3 = 0;
-    btn.style.border = "1px solid rgb(109, 109, 109)";
+    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
     bodyColors = remove(bodyColors, 'Green');
     preview = updatePreview();
     drawFish(preview);
@@ -341,13 +347,15 @@ function chooseBOrange() {
   let btn = document.getElementById('bodyCol4');
   if (bc4 == 0) {
     bc4 = 1;
-    btn.style.border = "5px solid greenyellow";
+    btn.style.width = "220px";
+    btn.style.fontWeight = "bold";
     bodyColors.push('Orange');
     preview = updatePreview();
     drawFish(preview);
   } else {
     bc4 = 0;
-    btn.style.border = "1px solid rgb(109, 109, 109)";
+    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
     bodyColors = remove(bodyColors, 'Orange');
     preview = updatePreview();
     drawFish(preview);
@@ -361,13 +369,15 @@ function chooseBPink() {
   let btn = document.getElementById('bodyCol5');
   if (bc5 == 0) {
     bc5 = 1;
-    btn.style.border = "5px solid greenyellow";
+    btn.style.width = "220px";
+    btn.style.fontWeight = "bold";
     bodyColors.push('Pink');
     preview = updatePreview();
     drawFish(preview);
   } else {
     bc5 = 0;
-    btn.style.border = "1px solid rgb(109, 109, 109)";
+    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
     bodyColors = remove(bodyColors, 'Pink');
     preview = updatePreview();
     drawFish(preview);
@@ -381,13 +391,15 @@ function chooseBPurple() {
   let btn = document.getElementById('bodyCol6');
   if (bc6 == 0) {
     bc6 = 1;
-    btn.style.border = "5px solid greenyellow";
+    btn.style.width = "220px";
+    btn.style.fontWeight = "bold";
     bodyColors.push('Purple');
     preview = updatePreview();
     drawFish(preview);
   } else {
     bc6 = 0;
-    btn.style.border = "1px solid rgb(109, 109, 109)";
+    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
     bodyColors = remove(bodyColors, 'Purple');
     preview = updatePreview();
     drawFish(preview);
@@ -401,13 +413,15 @@ function chooseBYellow() {
   let btn = document.getElementById('bodyCol7');
   if (bc7 == 0) {
     bc7 = 1;
-    btn.style.border = "5px solid greenyellow";
+    btn.style.width = "220px";
+    btn.style.fontWeight = "bold";
     bodyColors.push('Yellow');
     preview = updatePreview();
     drawFish(preview);
   } else {
     bc7 = 0;
-    btn.style.border = "1px solid rgb(109, 109, 109)";
+    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
     bodyColors = remove(bodyColors, 'Yellow');
     preview = updatePreview();
     drawFish(preview);
@@ -420,11 +434,11 @@ function chooseBYellow() {
 function tcCount() {
   let c = tfColors.length;
   if (c == 0) {
-    document.getElementById('ntfcs').innerHTML = '<b>' + c.toString() + '</b>';
-    document.getElementById('ntfcs').style.color = "red";
+    document.getElementById('ntfc').innerHTML = '<b>' + c.toString() + '</b>';
+    document.getElementById('ntfc').style.color = "red";
   } else {
-    document.getElementById('ntfcs').innerHTML = c.toString();
-    document.getElementById('ntfcs').style.color = "black";
+    document.getElementById('ntfc').innerHTML = c.toString();
+    document.getElementById('ntfc').style.color = "black";
   }
 }
 
@@ -433,13 +447,15 @@ function chooseTRed() {
   let btn = document.getElementById('tfCol1');
   if (tc1 == 0) {
     tc1 = 1;
-    btn.style.border = "5px solid greenyellow";
+    btn.style.width = "220px";
+    btn.style.fontWeight = "bold";
     tfColors.push('Red');
     preview = updatePreview();
     drawFish(preview);
   } else {
     tc1 = 0;
-    btn.style.border = "1px solid rgb(109, 109, 109)";
+    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
     tfColors = remove(tfColors, 'Red');
     preview = updatePreview();
     drawFish(preview);
@@ -453,13 +469,15 @@ function chooseTBlue() {
   let btn = document.getElementById('tfCol2');
   if (tc2 == 0) {
     tc2 = 1;
-    btn.style.border = "5px solid greenyellow";
+    btn.style.width = "220px";
+    btn.style.fontWeight = "bold";
     tfColors.push('Blue');
     preview = updatePreview();
     drawFish(preview);
   } else {
     tc2 = 0;
-    btn.style.border = "1px solid rgb(109, 109, 109)";
+    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
     tfColors = remove(tfColors, 'Blue');
     preview = updatePreview();
     drawFish(preview);
@@ -473,13 +491,15 @@ function chooseTGreen() {
   let btn = document.getElementById('tfCol3');
   if (tc3 == 0) {
     tc3 = 1;
-    btn.style.border = "5px solid greenyellow";
+    btn.style.width = "220px";
+    btn.style.fontWeight = "bold";
     tfColors.push('Green');
     preview = updatePreview();
     drawFish(preview);
   } else {
     tc3 = 0;
-    btn.style.border = "1px solid rgb(109, 109, 109)";
+    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
     tfColors = remove(tfColors, 'Green');
     preview = updatePreview();
     drawFish(preview);
@@ -493,13 +513,15 @@ function chooseTOrange() {
   let btn = document.getElementById('tfCol4');
   if (tc4 == 0) {
     tc4 = 1;
-    btn.style.border = "5px solid greenyellow";
+    btn.style.width = "220px";
+    btn.style.fontWeight = "bold";
     tfColors.push('Orange');
     preview = updatePreview();
     drawFish(preview);
   } else {
     tc4 = 0;
-    btn.style.border = "1px solid rgb(109, 109, 109)";
+    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
     tfColors = remove(tfColors, 'Orange');
     preview = updatePreview();
     drawFish(preview);
@@ -513,13 +535,15 @@ function chooseTPink() {
   let btn = document.getElementById('tfCol5');
   if (tc5 == 0) {
     tc5 = 1;
-    btn.style.border = "5px solid greenyellow";
+    btn.style.width = "220px";
+    btn.style.fontWeight = "bold";
     tfColors.push('Pink');
     preview = updatePreview();
     drawFish(preview);
   } else {
     tc5 = 0;
-    btn.style.border = "1px solid rgb(109, 109, 109)";
+    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
     tfColors = remove(tfColors, 'Pink');
     preview = updatePreview();
     drawFish(preview);
@@ -533,13 +557,15 @@ function chooseTPurple() {
   let btn = document.getElementById('tfCol6');
   if (tc6 == 0) {
     tc6 = 1;
-    btn.style.border = "5px solid greenyellow";
+    btn.style.width = "220px";
+    btn.style.fontWeight = "bold";
     tfColors.push('Purple');
     preview = updatePreview();
     drawFish(preview);
   } else {
     tc6 = 0;
-    btn.style.border = "1px solid rgb(109, 109, 109)";
+    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
     tfColors = remove(tfColors, 'Purple');
     preview = updatePreview();
     drawFish(preview);
@@ -553,13 +579,15 @@ function chooseTYellow() {
   let btn = document.getElementById('tfCol7');
   if (tc7 == 0) {
     tc7 = 1;
-    btn.style.border = "5px solid greenyellow";
+    btn.style.width = "220px";
+    btn.style.fontWeight = "bold";
     tfColors.push('Yellow');
     preview = updatePreview();
     drawFish(preview);
   } else {
     tc7 = 0;
-    btn.style.border = "1px solid rgb(109, 109, 109)";
+    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
     tfColors = remove(tfColors, 'Yellow');
     preview = updatePreview();
     drawFish(preview);
@@ -585,13 +613,15 @@ function addBody1() {
   let btn = document.getElementById('body1');
   if (bs1 == 0) {
     bs1 = 1;
-    btn.style.border = "5px solid greenyellow";
+    btn.style.width = "220px";
+    btn.style.fontWeight = "bold";
     bodyShapes.push('body1');
     preview = updatePreview();
     drawFish(preview);
   } else {
     bs1 = 0;
-    btn.style.border = "1px solid rgb(109, 109, 109)";
+    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
     bodyShapes = remove(bodyShapes, 'body1');
     preview = updatePreview();
     drawFish(preview);
@@ -605,13 +635,15 @@ function addBody2() {
   let btn = document.getElementById('body2');
   if (bs2 == 0) {
     bs2 = 1;
-    btn.style.border = "5px solid greenyellow";
+    btn.style.width = "220px";
+    btn.style.fontWeight = "bold";
     bodyShapes.push('body2');
     preview = updatePreview();
     drawFish(preview);
   } else {
     bs2 = 0;
-    btn.style.border = "1px solid rgb(109, 109, 109)";
+    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
     bodyShapes = remove(bodyShapes, 'body2');
     preview = updatePreview();
     drawFish(preview);
@@ -625,13 +657,15 @@ function addBody3() {
   let btn = document.getElementById('body3');
   if (bs3 == 0) {
     bs3 = 1;
-    btn.style.border = "5px solid greenyellow";
+    btn.style.width = "220px";
+    btn.style.fontWeight = "bold";
     bodyShapes.push('body3');
     preview = updatePreview();
     drawFish(preview);
   } else {
     bs3 = 0;
-    btn.style.border = "1px solid rgb(109, 109, 109)";
+    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
     bodyShapes = remove(bodyShapes, 'body3');
     preview = updatePreview();
     drawFish(preview);
@@ -645,13 +679,15 @@ function addBody4() {
   let btn = document.getElementById('body4');
   if (bs4 == 0) {
     bs4 = 1;
-    btn.style.border = "5px solid greenyellow";
+    btn.style.width = "220px";
+    btn.style.fontWeight = "bold";
     bodyShapes.push('body4');
     preview = updatePreview();
     drawFish(preview);
   } else {
     bs4 = 0;
-    btn.style.border = "1px solid rgb(109, 109, 109)";
+    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
     bodyShapes = remove(bodyShapes, 'body4');
     preview = updatePreview();
     drawFish(preview);
@@ -676,13 +712,15 @@ function addTail1() {
   let btn = document.getElementById('tail1');
   if (ts1 == 0) {
     ts1 = 1;
-    btn.style.border = "5px solid greenyellow";
+    btn.style.width = "220px";
+    btn.style.fontWeight = "bold";
     tailShapes.push('tail1');
     preview = updatePreview();
     drawFish(preview);
   } else {
     ts1 = 0;
-    btn.style.border = "1px solid rgb(109, 109, 109)";
+    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
     tailShapes = remove(tailShapes, 'tail1');
     preview = updatePreview();
     drawFish(preview);
@@ -696,13 +734,15 @@ function addTail2() {
   let btn = document.getElementById('tail2');
   if (ts2 == 0) {
     ts2 = 1;
-    btn.style.border = "5px solid greenyellow";
+    btn.style.width = "220px";
+    btn.style.fontWeight = "bold";
     tailShapes.push('tail2');
     preview = updatePreview();
     drawFish(preview);
   } else {
     ts2 = 0;
-    btn.style.border = "1px solid rgb(109, 109, 109)";
+    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
     tailShapes = remove(tailShapes, 'tail2');
     preview = updatePreview();
     drawFish(preview);
@@ -716,13 +756,15 @@ function addTail3() {
   let btn = document.getElementById('tail3');
   if (ts3 == 0) {
     ts3 = 1;
-    btn.style.border = "5px solid greenyellow";
+    btn.style.width = "220px";
+    btn.style.fontWeight = "bold";
     tailShapes.push('tail3');
     preview = updatePreview();
     drawFish(preview);
   } else {
     ts3 = 0;
-    btn.style.border = "1px solid rgb(109, 109, 109)";
+    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
     tailShapes = remove(tailShapes, 'tail3');
     preview = updatePreview();
     drawFish(preview);
@@ -736,13 +778,15 @@ function addTail4() {
   let btn = document.getElementById('tail4');
   if (ts4 == 0) {
     ts4 = 1;
-    btn.style.border = "5px solid greenyellow";
+    btn.style.width = "220px";
+    btn.style.fontWeight = "bold";
     tailShapes.push('tail4');
     preview = updatePreview();
     drawFish(preview);
   } else {
     ts4 = 0;
-    btn.style.border = "1px solid rgb(109, 109, 109)";
+    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
     tailShapes = remove(tailShapes, 'tail4');
     preview = updatePreview();
     drawFish(preview);
@@ -754,11 +798,11 @@ function addTail4() {
 function dfCount() {
   let c = dfinShapes.length;
   if (c == 0) {
-    document.getElementById('ndfs').innerHTML = '<b>' + c.toString() + '</b>';
-    document.getElementById('ndfs').style.color = "red";
+    document.getElementById('nds').innerHTML = '<b>' + c.toString() + '</b>';
+    document.getElementById('nds').style.color = "red";
   } else {
-    document.getElementById('ndfs').innerHTML = c.toString();
-    document.getElementById('ndfs').style.color = "black";
+    document.getElementById('nds').innerHTML = c.toString();
+    document.getElementById('nds').style.color = "black";
   }
 }
 
@@ -767,13 +811,15 @@ function addDfin1() {
   let btn = document.getElementById('dfin1');
   if (df1 == 0) {
     df1 = 1;
-    btn.style.border = "5px solid greenyellow";
+    btn.style.width = "220px";
+    btn.style.fontWeight = "bold";
     dfinShapes.push('dfin1');
     preview = updatePreview();
     drawFish(preview);
   } else {
     df1 = 0;
-    btn.style.border = "1px solid rgb(109, 109, 109)";
+    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
     dfinShapes = remove(dfinShapes, 'dfin1');
     preview = updatePreview();
     drawFish(preview);
@@ -787,13 +833,15 @@ function addDfin2() {
   let btn = document.getElementById('dfin2');
   if (df2 == 0) {
     df2 = 1;
-    btn.style.border = "5px solid greenyellow";
+    btn.style.width = "220px";
+    btn.style.fontWeight = "bold";
     dfinShapes.push('dfin2');
     preview = updatePreview();
     drawFish(preview);
   } else {
     df2 = 0;
-    btn.style.border = "1px solid rgb(109, 109, 109)";
+    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
     dfinShapes = remove(dfinShapes, 'dfin2');
     preview = updatePreview();
     drawFish(preview);
@@ -807,13 +855,15 @@ function addDfin3() {
   let btn = document.getElementById('dfin3');
   if (df3 == 0) {
     df3 = 1;
-    btn.style.border = "5px solid greenyellow";
+    btn.style.width = "220px";
+    btn.style.fontWeight = "bold";
     dfinShapes.push('dfin3');
     preview = updatePreview();
     drawFish(preview);
   } else {
     df3 = 0;
-    btn.style.border = "1px solid rgb(109, 109, 109)";
+    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
     dfinShapes = remove(dfinShapes, 'dfin3');
     preview = updatePreview();
     drawFish(preview);
@@ -827,13 +877,15 @@ function addDfin4() {
   let btn = document.getElementById('dfin4');
   if (df4 == 0) {
     df4 = 1;
-    btn.style.border = "5px solid greenyellow";
+    btn.style.width = "220px";
+    btn.style.fontWeight = "bold";
     dfinShapes.push('dfin4');
     preview = updatePreview();
     drawFish(preview);
   } else {
     df4 = 0;
-    btn.style.border = "1px solid rgb(109, 109, 109)";
+    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
     dfinShapes = remove(dfinShapes, 'dfin4');
     preview = updatePreview();
     drawFish(preview);
@@ -847,13 +899,15 @@ function addDfin5() {
   let btn = document.getElementById('dfin5');
   if (df5 == 0) {
     df5 = 1;
-    btn.style.border = "5px solid greenyellow";
+    btn.style.width = "220px";
+    btn.style.fontWeight = "bold";
     dfinShapes.push('dfin5');
     preview = updatePreview();
     drawFish(preview);
   } else {
     df5 = 0;
-    btn.style.border = "1px solid rgb(109, 109, 109)";
+    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
     dfinShapes = remove(dfinShapes, 'dfin5');
     preview = updatePreview();
     drawFish(preview);
@@ -866,11 +920,11 @@ function addDfin5() {
 function pfCount() {
   let c = pfinShapes.length;
   if (c == 0) {
-    document.getElementById('npfs').innerHTML = '<b>' + c.toString() + '</b>';
-    document.getElementById('npfs').style.color = "red";
+    document.getElementById('nps').innerHTML = '<b>' + c.toString() + '</b>';
+    document.getElementById('nps').style.color = "red";
   } else {
-    document.getElementById('npfs').innerHTML = c.toString();
-    document.getElementById('npfs').style.color = "black";
+    document.getElementById('nps').innerHTML = c.toString();
+    document.getElementById('nps').style.color = "black";
   }
 }
 
@@ -879,13 +933,15 @@ function addPfin1() {
   let btn = document.getElementById('pfin1');
   if (pf1 == 0) {
     pf1 = 1;
-    btn.style.border = "5px solid greenyellow";
+    btn.style.width = "220px";
+    btn.style.fontWeight = "bold";
     pfinShapes.push('pfin1');
     preview = updatePreview();
     drawFish(preview);
   } else {
     pf1 = 0;
-    btn.style.border = "1px solid rgb(109, 109, 109)";
+    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
     pfinShapes = remove(pfinShapes, 'pfin1');
     preview = updatePreview();
     drawFish(preview);
@@ -899,13 +955,15 @@ function addPfin2() {
   let btn = document.getElementById('pfin2');
   if (pf2 == 0) {
     pf2 = 1;
-    btn.style.border = "5px solid greenyellow";
+    btn.style.width = "220px";
+    btn.style.fontWeight = "bold";
     pfinShapes.push('pfin2');
     preview = updatePreview();
     drawFish(preview);
   } else {
     pf2 = 0;
-    btn.style.border = "1px solid rgb(109, 109, 109)";
+    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
     pfinShapes = remove(pfinShapes, 'pfin2');
     preview = updatePreview();
     drawFish(preview);
@@ -919,13 +977,15 @@ function addPfin3() {
   let btn = document.getElementById('pfin3');
   if (pf3 == 0) {
     pf3 = 1;
-    btn.style.border = "5px solid greenyellow";
+    btn.style.width = "220px";
+    btn.style.fontWeight = "bold";
     pfinShapes.push('pfin3');
     preview = updatePreview();
     drawFish(preview);
   } else {
     pf3 = 0;
-    btn.style.border = "1px solid rgb(109, 109, 109)";
+    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
     pfinShapes = remove(pfinShapes, 'pfin3');
     preview = updatePreview();
     drawFish(preview);
@@ -939,13 +999,15 @@ function addPfin4() {
   let btn = document.getElementById('pfin4');
   if (pf4 == 0) {
     pf4 = 1;
-    btn.style.border = "5px solid greenyellow";
+    btn.style.width = "220px";
+    btn.style.fontWeight = "bold";
     pfinShapes.push('pfin4');
     preview = updatePreview();
     drawFish(preview);
   } else {
     pf4 = 0;
-    btn.style.border = "1px solid rgb(109, 109, 109)";
+    btn.style.width = "200px";
+    btn.style.fontWeight = "normal";
     pfinShapes = remove(pfinShapes, 'pfin4');
     preview = updatePreview();
     drawFish(preview);
@@ -986,8 +1048,8 @@ async function drawFish(list) {
 }
 
 function init() {
-  chooseBRed();
-  chooseTRed();
+  chooseBBlue();
+  chooseTBlue();
   addBody1();
   addTail1();
   addDfin1();
@@ -1066,6 +1128,7 @@ function generateImages() {
   count = 0;
   total = 0;
   fishes = [];
+  urls = [];
   if (totalC == 0) {
     let warning = document.getElementById("warn");
     warning.style.display = "block";
@@ -1073,6 +1136,7 @@ function generateImages() {
     generateImageSpecs();
     total = fishes.length;
     document.getElementById("progress").max = total;
+    document.getElementById("progress").value = 0;
     document.getElementById("progressBar").style.display = "block";
     let clear = 0;
     let id = setInterval(function() {
@@ -1095,6 +1159,7 @@ function generateImages() {
             }
             if (clear == 1) {
               clearInterval(id);
+              document.getElementById("progressBar").style.display = "none";
             }
           }
         }
