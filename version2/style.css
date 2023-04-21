@@ -1,0 +1,201 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'IBM Plex Mono';font-size: 22px;
+    font-size: 16px;
+    width: 100%;
+    height: auto;
+    background: beige;
+    opacity: 1;
+    position: relative;
+    margin: 0;
+}
+
+.heading {
+    margin-top: 20px;
+    margin-left: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 50px;
+}
+
+hr {
+    height: 1px;
+    background-color: black;
+    border: none;
+    margin-bottom: 0px;
+}
+
+.row {
+    margin-top: 0px;
+    margin-left: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+}
+
+.logo {
+    width: 70px;
+}
+
+#contact {
+    margin-left: auto;
+    margin-right: 50px;
+}
+
+.description {
+    width: 13%;
+    margin-right: 20px;
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+.vl {
+    border-left: 1px solid black;
+    height: 500px;
+    margin-left: 0;
+    margin-right: 22px;
+}
+
+button {
+    font-family: 'IBM Plex Mono';font-size: 22px;
+    font-size: 15px;
+}
+
+.attribute-class {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    margin-top: 10px;
+}
+
+.attribute-class button {
+    width: 210px;
+    height: 50px;
+    position: relative;
+    text-align: left;
+    padding: 10px;
+    background: beige;
+    border: 1px solid black;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: -1px;
+    margin-right: 0px;
+}
+
+.attribute-values {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    margin-top: 10px;
+}
+
+.attribute-value button {
+    width: 200px;
+    height: 90px;
+    padding: 10px;
+    position: relative;
+    background: beige;
+    border: 1px solid black;
+    cursor: pointer;
+    display: block;
+    margin-bottom: -1px;
+}
+
+.color button {
+    width: 200px;
+    height: 60px;
+    padding: 10px;
+    position: relative;
+    border: 1px solid black;
+    cursor: pointer;
+    display: block;
+}
+
+.imgOpt {
+    height: 34px;
+}
+
+#body1img {
+    height: 55px;
+    margin-bottom: 0;
+}
+
+#body1p {
+    margin-top: 0;
+}
+#body2img {
+    margin-top: 10px;
+    height: 25px;    
+}
+
+#body3img {
+    height: 50px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+#body3p {
+    margin-top: 0px;
+}
+
+#long {
+    margin-top: 10px;
+    height: 25px;
+    width: 30px;
+    
+}
+
+#body5img {
+    height: 50px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.att_num {
+    margin-left: auto;
+    margin-right: 0px;
+}
+
+.canvas {
+    margin-left: auto;
+    margin-right: 50px;
+    margin-top: 10px;
+}
+
+.generate {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.generate button {
+    background-color: rgb(184, 233, 155);
+    height: 40px;
+}
+
+.warn {
+    display: none;
+    color: rgb(221, 84, 84);
+}
+
+progress {
+    border: none;
+    width: 500px;
+    background: white;
+    margin-top: 10px;
+}
+
+progress::-webkit-progress-value {
+    background: rgb(184, 233, 155) !important;
+}
+
+progress::-webkit-progress-bar {
+    background: white;
+}
