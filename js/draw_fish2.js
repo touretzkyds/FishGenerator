@@ -1,30 +1,30 @@
 var fishDict = {
   'body1' : {
-      uri: 'img/body/body1',
-      x: 100, y: 65, sw: 180, sh: 180,
-      dfinx: 170, dfiny: 63, dfinsw: 40, dfinsh: 40,
+      uri: 'img2/body/body1',
+      x: 105, y: 65, sw: 180, sh: 180,
+      dfinx: 175, dfiny: 63, dfinsw: 40, dfinsh: 40,
       tailx: 228, taily: 115, tailsw: 70, tailsh: 70,
-      pfinx: 170, pfiny: 150, pfinsw: 40, pfinsh: 40
+      pfinx: 175, pfiny: 150, pfinsw: 40, pfinsh: 40
   },
   'body2' : {
-    uri: 'img/body/body2',
+    uri: 'img2/body/body2',
     x: 100, y: 100, sw: 250, sh: 75,
-    dfinx: 200, dfiny: 70, dfinsw: 40, dfinsh: 40,
+    dfinx: 200, dfiny: 75, dfinsw: 40, dfinsh: 40,
     tailx: 335, taily: 105, tailsw: 70, tailsh: 70,
     pfinx: 200, pfiny: 140, pfinsw: 40, pfinsh: 40
   },
   'body3' : {
-    uri: 'img/body/body3',
+    uri: 'img2/body/body3',
     x: 100, y: 90, sw: 220, sh: 110,
-    dfinx: 190, dfiny: 60, dfinsw: 40, dfinsh: 40,
-    tailx: 310, taily: 100, tailsw: 70, tailsh: 70,
+    dfinx: 190, dfiny: 65, dfinsw: 40, dfinsh: 40,
+    tailx: 300, taily: 100, tailsw: 70, tailsh: 70,
     pfinx: 190, pfiny: 145, pfinsw: 40, pfinsh: 40
   },
   'body4' : {
-    uri: 'img/body/body4',
+    uri: 'img2/body/body4',
     x: 100, y: 90, sw: 240, sh: 110,
     dfinx: 190, dfiny: 60, dfinsw: 40, dfinsh: 40,
-    tailx: 325, taily: 100, tailsw: 70, tailsh: 70,
+    tailx: 325, taily: 95, tailsw: 70, tailsh: 70,
     pfinx: 195, pfiny: 145, pfinsw: 40, pfinsh: 40
   }
 }
@@ -225,15 +225,15 @@ function updatePreview() {
   var tfCol = tfColors[tfColors.length - 1];
   if (dfinShapes.length != 0) {
     let dfin = dfinShapes[dfinShapes.length - 1];
-    dfin_uri = 'img/dfin/' + dfin; 
+    dfin_uri = 'img2/dfin/' + dfin; 
   }
   if (tailShapes.length != 0) {
     let tail = tailShapes[tailShapes.length - 1];
-    tail_uri = 'img/tail/' + tail; 
+    tail_uri = 'img2/tail/' + tail; 
   }
   if (pfinShapes.length != 0) {
     let pfin = pfinShapes[pfinShapes.length - 1];
-    pfin_uri = 'img/pfin/' + pfin; 
+    pfin_uri = 'img2/pfin/' + pfin; 
   }
   if (dfin_uri != '') {
     newlist.push({ uri: dfin_uri + tfCol + '.png', 
@@ -1058,9 +1058,9 @@ function init() {
 
 function getFishSpecs(body, dfin, tail, pfin, bodyCol, tfCol) {
   var newlist = [];
-  let dfin_uri = 'img/dfin/' + dfin; 
-  let tail_uri = 'img/tail/' + tail; 
-  let pfin_uri = 'img/pfin/' + pfin; 
+  let dfin_uri = 'img2/dfin/' + dfin; 
+  let tail_uri = 'img2/tail/' + tail; 
+  let pfin_uri = 'img2/pfin/' + pfin; 
   newlist.push({ uri: dfin_uri + tfCol + '.png', 
                     x: fishDict[body].dfinx, 
                     y: fishDict[body].dfiny, 
@@ -1168,7 +1168,7 @@ function generateImages() {
   }
 }
 
-function downloadImg(name) {
+function downloadimg(name) {
   var link = document.createElement('a');
   link.download = name;
   link.href = document.getElementById('canv').toDataURL()

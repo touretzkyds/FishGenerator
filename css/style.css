@@ -53,6 +53,12 @@ hr {
     font-size: 15px;
 }
 
+.choose_art {
+    background: beige;
+    border: 1px solid black;
+    padding: 6px;
+}
+
 .vl {
     border-left: 1px solid black;
     height: 500px;
