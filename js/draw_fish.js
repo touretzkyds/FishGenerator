@@ -1139,17 +1139,19 @@ var zip = new JSZip();
 var folder = zip.folder("Fish");
 var total = 0;
 
-async function generateOneFish() {
-    await drawFish(fishes[count]);
+const generateOneFish = () => {
+  return new Promise((resolve, reject) => {   
     setTimeout(function() {
+      drawFish(fishes[count]);
       let url = canvas.toDataURL();
       let base64String = url.replace("data:image/png;base64,", "");
       urls.push(base64String);
       count ++; 
       document.getElementById("progress").value = count;
       resolve(urls);
-    }, 250);   
-}
+    }, 100);   
+  });
+};
 
 function generateImages() {
   count = 0;
