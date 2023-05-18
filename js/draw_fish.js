@@ -1139,9 +1139,8 @@ var zip = new JSZip();
 var folder = zip.folder("Fish");
 var total = 0;
 
-const generateOneFish = () => {
-  return new Promise((resolve, reject) => {   
-    drawFish(fishes[count]);
+async function generateOneFish() {
+    await drawFish(fishes[count]);
     setTimeout(function() {
       let url = canvas.toDataURL();
       let base64String = url.replace("data:image/png;base64,", "");
@@ -1150,8 +1149,7 @@ const generateOneFish = () => {
       document.getElementById("progress").value = count;
       resolve(urls);
     }, 150);   
-  });
-};
+}
 
 function generateImages() {
   count = 0;
