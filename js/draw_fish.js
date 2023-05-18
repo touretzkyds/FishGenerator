@@ -1141,15 +1141,14 @@ var total = 0;
 
 const generateOneFish = () => {
   return new Promise((resolve, reject) => {   
+    drawFish(fishes[count]);
     setTimeout(function() {
-      drawFish(fishes[count]);
       let url = canvas.toDataURL();
       let base64String = url.replace("data:image/png;base64,", "");
       urls.push(base64String);
       count ++; 
       document.getElementById("progress").value = count;
       resolve(urls);
-      console.log(1)
     }, 100);   
   });
 };
