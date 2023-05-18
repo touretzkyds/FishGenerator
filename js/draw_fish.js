@@ -1148,7 +1148,7 @@ async function generateOneFish() {
       count ++; 
       document.getElementById("progress").value = count;
       resolve(urls);
-    }, 150);   
+    }, 250);   
 }
 
 function generateImages() {

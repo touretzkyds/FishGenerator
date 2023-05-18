@@ -1120,7 +1120,7 @@ const generateOneFish = () => {
       count ++; 
       document.getElementById("progress").value = count;
       resolve(urls);
-    }, 150);   
+    }, 220);   
   });
 };
 
