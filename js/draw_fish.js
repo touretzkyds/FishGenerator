@@ -1149,6 +1149,7 @@ const generateOneFish = () => {
       count ++; 
       document.getElementById("progress").value = count;
       resolve(urls);
+      console.log(1)
     }, 100);   
   });
 };
