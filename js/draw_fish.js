@@ -1148,6 +1148,7 @@ const generateOneFish = () => {
       urls.push(base64String);
       count ++; 
       document.getElementById("progress").value = count;
+      console.log(1);
       resolve(urls);
     }, 100);   
   });
