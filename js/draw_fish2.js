@@ -1120,7 +1120,7 @@ const generateOneFish = () => {
       count ++; 
       document.getElementById("progress").value = count;
       resolve(urls);
-    }, 220);   
+    }, 200);   
   });
 };
 
@@ -1164,7 +1164,7 @@ function generateImages() {
           }
         }
       });
-    }, fishes.length + 1);
+    }, 200);
   }
 }
 
