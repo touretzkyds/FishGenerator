@@ -1164,7 +1164,7 @@ function generateImages() {
           }
         }
       });
-    }, 300);
+    }, 500);
   }
 }
 
