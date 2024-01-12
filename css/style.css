@@ -57,6 +57,11 @@ hr {
     background: beige;
     border: 1px solid black;
     padding: 6px;
+    cursor: pointer;
+}
+
+.generate_button {
+    cursor: pointer;
 }
 
 .vl {
@@ -127,41 +132,85 @@ button {
     height: 34px;
 }
 
-#body1img {
+.body1img {
     height: 55px;
     margin-bottom: 0;
 }
 
-#body1p {
+.body1p {
     margin-top: 0;
 }
-#body2img {
+
+.body2img {
     margin-top: 10px;
     height: 25px;    
 }
 
-#body3img {
+.body2p {}
+
+.body3img {
     height: 50px;
     margin-bottom: 0;
     margin-top: 0;
 }
 
-#body3p {
+.body3p {
     margin-top: 0px;
 }
 
-#long {
-    margin-top: 10px;
-    height: 25px;
-    width: 30px;
-    
-}
+.body4img {}
 
-#body5img {
+.body4p {}
+
+.body5img {
     height: 50px;
     margin-bottom: 0;
     margin-top: 0;
 }
+
+.body5p {
+    margin-top: 0px;
+}
+
+.long {
+    margin-top: 10px;
+    height: 25px;
+    width: 30px;
+}
+
+
+.imgOptB {
+    height: 34px;
+}
+
+.body1imgB {
+    height: 55px;
+    margin-bottom: 0;
+}
+
+.body1pB {
+    margin-top: 0;
+}
+
+.body2imgB {}
+
+.body2pB {}
+
+.body3imgB {
+    width: 80px;
+    height: 40px;
+    margin-bottom: 0;
+}
+
+.body3pB {
+    margin-top: 10px;
+}
+
+.longB {
+    width: 54px;
+    height: 27px;
+}
+
 
 .att_num {
     margin-left: auto;

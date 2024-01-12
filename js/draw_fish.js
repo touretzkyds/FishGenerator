@@ -1,4 +1,4 @@
-var fishDict = {
+var fishDict1 = {
   'body1' : {
       uri: 'img/body/body1',
       x: 100, y: 65, sw: 180, sh: 180,
@@ -36,6 +36,49 @@ var fishDict = {
   }
 }
 
+var fishDict2 = {
+  'body1' : {
+    uri: 'img2/body/body1',
+    x: 105, y: 65, sw: 180, sh: 180,
+    dfinx: 175, dfiny: 63, dfinsw: 40, dfinsh: 40,
+    tailx: 228, taily: 115, tailsw: 70, tailsh: 70,
+    pfinx: 175, pfiny: 150, pfinsw: 40, pfinsh: 40
+  },
+  'body2' : {
+    uri: 'img2/body/body2',
+    x: 100, y: 100, sw: 250, sh: 75,
+    dfinx: 200, dfiny: 75, dfinsw: 40, dfinsh: 40,
+    tailx: 335, taily: 105, tailsw: 70, tailsh: 70,
+    pfinx: 200, pfiny: 140, pfinsw: 40, pfinsh: 40
+  },
+  'body3' : {
+    uri: 'img2/body/body3',
+    x: 100, y: 90, sw: 220, sh: 110,
+    dfinx: 190, dfiny: 65, dfinsw: 40, dfinsh: 40,
+    tailx: 300, taily: 100, tailsw: 70, tailsh: 70,
+    pfinx: 190, pfiny: 145, pfinsw: 40, pfinsh: 40
+  },
+  'body4' : {
+    uri: 'img2/body/body4',
+    x: 100, y: 90, sw: 240, sh: 110,
+    dfinx: 190, dfiny: 60, dfinsw: 40, dfinsh: 40,
+    tailx: 325, taily: 95, tailsw: 70, tailsh: 70,
+    pfinx: 195, pfiny: 145, pfinsw: 40, pfinsh: 40
+  }
+}
+
+var artStyle = 1;
+var imagesFolder = 'img';
+var fishDict;
+var loadingImages = [];
+var loadedImages = {};
+var initialPreLoadedImages = -1;
+var checkInterval = -1;
+var currentFishId = '';
+var progressStr = '';
+var progress1;
+var progress2;
+var progressText;
 
 function remove(arr, value) {
   var index = arr.indexOf(value);
@@ -213,10 +256,13 @@ var totalC = 0;
 var preview = [];
 
 function totalCount() {
-  totalC = bodyShapes.length * bodyColors.length 
+  totalC = bodyShapes.length * bodyColors.length
           * tailShapes.length * dfinShapes.length
           * pfinShapes.length * tfColors.length;
-  document.getElementById("num").innerHTML = "You are generating " + totalC.toString() + " images";
+  progressStr = 'You are generating ' + totalC.toString() + ' images';
+  if (!isEmpty(progressText)) {
+    progressText.innerHTML = progressStr;
+  }
 }
 
 function updatePreview() {
@@ -232,40 +278,40 @@ function updatePreview() {
   var tfCol = tfColors[tfColors.length - 1];
   if (dfinShapes.length != 0) {
     let dfin = dfinShapes[dfinShapes.length - 1];
-    dfin_uri = 'img/dfin/' + dfin; 
+    dfin_uri = imagesFolder + '/dfin/' + dfin;
   }
   if (tailShapes.length != 0) {
     let tail = tailShapes[tailShapes.length - 1];
-    tail_uri = 'img/tail/' + tail; 
+    tail_uri = imagesFolder + '/tail/' + tail;
   }
   if (pfinShapes.length != 0) {
     let pfin = pfinShapes[pfinShapes.length - 1];
-    pfin_uri = 'img/pfin/' + pfin; 
+    pfin_uri = imagesFolder + '/pfin/' + pfin;
   }
   if (dfin_uri != '') {
-    newlist.push({ uri: dfin_uri + tfCol + '.png', 
-                    x: fishDict[body].dfinx, 
-                    y: fishDict[body].dfiny, 
-                    sw: fishDict[body].dfinsw, 
+    newlist.push({ uri: dfin_uri + tfCol + '.png',
+                    x: fishDict[body].dfinx,
+                    y: fishDict[body].dfiny,
+                    sw: fishDict[body].dfinsw,
                     sh: fishDict[body].dfinsh });
   }
   if (tail_uri != '') {
-    newlist.push({ uri: tail_uri + tfCol + '.png', 
-                    x: fishDict[body].tailx, 
-                    y: fishDict[body].taily, 
-                    sw: fishDict[body].tailsw, 
+    newlist.push({ uri: tail_uri + tfCol + '.png',
+                    x: fishDict[body].tailx,
+                    y: fishDict[body].taily,
+                    sw: fishDict[body].tailsw,
                     sh: fishDict[body].tailsh });
   }
-  newlist.push({ uri: fishDict[body].uri + bodyCol + '.png', 
-                    x: fishDict[body].x, 
-                    y: fishDict[body].y, 
-                    sw: fishDict[body].sw, 
+  newlist.push({ uri: fishDict[body].uri + bodyCol + '.png',
+                    x: fishDict[body].x,
+                    y: fishDict[body].y,
+                    sw: fishDict[body].sw,
                     sh: fishDict[body].sh });
   if (pfin_uri != '') {
-    newlist.push({ uri: pfin_uri + tfCol + '.png', 
-                    x: fishDict[body].pfinx, 
-                    y: fishDict[body].pfiny, 
-                    sw: fishDict[body].pfinsw, 
+    newlist.push({ uri: pfin_uri + tfCol + '.png',
+                    x: fishDict[body].pfinx,
+                    y: fishDict[body].pfiny,
+                    sw: fishDict[body].pfinsw,
                     sh: fishDict[body].pfinsh });
   }
   return newlist;
@@ -676,7 +722,7 @@ function addBody3() {
     bodyShapes = remove(bodyShapes, 'body3');
     preview = updatePreview();
     drawFish(preview);
-  } 
+  }
   bsCount();
   totalCount();
 }
@@ -698,7 +744,7 @@ function addBody4() {
     bodyShapes = remove(bodyShapes, 'body4');
     preview = updatePreview();
     drawFish(preview);
-  } 
+  }
   bsCount();
   totalCount();
 }
@@ -720,7 +766,7 @@ function addBody5() {
     bodyShapes = remove(bodyShapes, 'body5');
     preview = updatePreview();
     drawFish(preview);
-  } 
+  }
   bsCount();
   totalCount();
 }
@@ -1051,32 +1097,123 @@ var context = canvas.getContext('2d');
 context.fillStyle = "white";
 context.fillRect(0, 0, canvas.width, canvas.height);
 
-const loadImage = url => {
+const loadImage = (id, url, prevLoadingImage) => {
   return new Promise((resolve, reject) => {
+    let loadingImage = {};
+    if (!isEmpty(prevLoadingImage)) { loadingImage = prevLoadingImage; }
+    loadingImage.id = id;
+    loadingImage.url = url;
+    loadingImage.time = Date.now();
+    loadingImage.loaded = false;
+    loadingImage.failed = false;
+    loadingImage.retries = 0;
+    if (isEmpty(prevLoadingImage)) {
+      loadingImages.push(loadingImage);
+    }
     const img = new Image();
-    img.onload = () => resolve(img);
-    img.onerror = () => reject(new Error(`load ${url} fail`));
+    img.onload = () => {
+      loadingImage.loaded = true;
+      loadedImages[id] = img;
+      resolve(img);
+      // console.log(id);
+    };
+    img.onerror = () => {
+      loadingImage.failed = true;
+      console.warn('load failed: ', url);
+      // reject(new Error(`load ${url} fail`));
+    }
     img.src = url;
   });
 };
 
-const drawOne = async options => {
-  const myOptions = Object.assign({}, options);  
-  const img = await loadImage(myOptions.uri);
-  context.drawImage(img, myOptions.x, myOptions.y, myOptions.sw, myOptions.sh);
+const drawOne = async (options, list, onlyPreLoaded) => {
+  const myOptions = Object.assign({}, options);
+  let id = getIdFromURL(myOptions.uri);
+  let img = loadedImages[id];
+  let drawingDelay = 0;
+  if (isEmpty(img)) {
+      if (onlyPreLoaded) { return drawingDelay; }
+      // console.log(id);
+      img = await loadImage(id, myOptions.uri);
+      drawingDelay = 100;
+      setTimeout(function () {
+      // context.drawImage(img, myOptions.x, myOptions.y, myOptions.sw, myOptions.sh);
+      // console.log(getIdFromList(list) == currentFishId);
+      if (getIdFromList(list) == currentFishId) {
+        drawFish(list, true);
+      }
+    }, drawingDelay);
+  } else {
+    if (getIdFromList(list) == currentFishId) {
+      context.drawImage(img, myOptions.x, myOptions.y, myOptions.sw, myOptions.sh);
+    }
+  }
+  return drawingDelay;
 };
 
 
-async function drawFish(list) {
+function checkLoadingImages() {
+  let remained = 0;
+  for (let index = 0; index < loadingImages.length; index++) {
+    let loadingImage = loadingImages[index];
+    if (loadingImage.loaded) { continue; }
+    remained++;
+    if (loadingImage.failed || (Date.now() > loadingImage.time + 30000)) { // failed or no response after 30 seconds
+      if (Date.now() < loadingImage.time + 2000) { continue; } // if failed, wait 2 seconds before retry
+      loadingImage.retries++;
+      if (loadingImage.retries > 20) {
+        console.error('failed loading', loadingImage.url);
+        continue;
+      }
+      loadImage(loadingImage.id, loadingImage.url, loadingImage);
+    }
+  }
+  if (loadingImages.length > 0) {
+    if (initialPreLoadedImages < 0) {
+      initialPreLoadedImages = loadingImages.length - remained;
+    }
+    let progressValue = 100;
+    if (loadingImages.length - initialPreLoadedImages > 0) {
+      progressValue = 100 * (loadingImages.length - initialPreLoadedImages - remained) / (loadingImages.length - initialPreLoadedImages);
+    }
+    // console.log(progressValue, loadingImages.length, initialPreLoadedImages, remained);
+    progress1.value = Math.round(progressValue);
+    progressText.innerHTML = progressStr + ':  preparing ' + String(Math.round(progressValue)) + '%';
+    // console.log(progress1.value, progress1.max)
+  }
+  return (remained == 0);
+};
+
+
+async function drawFish(list, onlyPreLoaded = false, index = -1) {
+  currentFishId = getIdFromList(list);
   context.clearRect(0, 0, canvas.width, canvas.height);
   context.fillStyle = "white";
   context.fillRect(0, 0, canvas.width, canvas.height);
+  let sumDelay = 0;
   for (let i = 0; i < list.length; i ++) {
-    await drawOne(list[i]);
+    let delay = await drawOne(list[i], list, onlyPreLoaded);
+    sumDelay += delay;
   }
+  if (index >= 0) {
+    let numberText = String(index + 1);
+    context.font = "14px Arial";
+    context.fillStyle = 'black';
+    context.textAlign = 'left';
+    context.textBaseline = "bottom";
+    context.fillText(numberText, 7, canvas.height - 5);
+  }
+  // console.log(sumDelay);
+  return sumDelay;
 }
 
-function init() {
+function init(style) {
+  artStyle = style;
+  fishDict = (artStyle == 1) ? fishDict1 : fishDict2;
+  imagesFolder = (artStyle == 1) ? 'img' : 'img2';
+  progress1 = document.getElementById("progress1");
+  progress2 = document.getElementById("progress2");
+  progressText = document.getElementById("progressText");
   chooseBBlue();
   chooseTBlue();
   addBody1();
@@ -1085,30 +1222,52 @@ function init() {
   addPfin1();
 }
 
+function isEmpty(object) {
+  return (object == null) || (object == undefined);
+}
+
+function getIdFromList(list) {
+  let id = "";
+  for (let index = 0; index < list.length; index++) {
+    let part = list[index];
+    id += getIdFromURL(part.uri) + '__';
+  }
+  return id;
+}
+
+function getIdFromURL(url) {
+  let id = url;
+  id = id.split('\\').join('_');
+  id = id.split(':').join('_');
+  id = id.split('/').join('_');
+  id = id.split('.').join('_');
+  return id;
+}
+
 function getFishSpecs(body, dfin, tail, pfin, bodyCol, tfCol) {
   var newlist = [];
-  let dfin_uri = 'img/dfin/' + dfin; 
-  let tail_uri = 'img/tail/' + tail; 
-  let pfin_uri = 'img/pfin/' + pfin; 
-  newlist.push({ uri: dfin_uri + tfCol + '.png', 
-                    x: fishDict[body].dfinx, 
-                    y: fishDict[body].dfiny, 
-                    sw: fishDict[body].dfinsw, 
+  let dfin_uri = imagesFolder + '/dfin/' + dfin;
+  let tail_uri = imagesFolder + '/tail/' + tail;
+  let pfin_uri = imagesFolder + '/pfin/' + pfin;
+  newlist.push({ uri: dfin_uri + tfCol + '.png',
+                    x: fishDict[body].dfinx,
+                    y: fishDict[body].dfiny,
+                    sw: fishDict[body].dfinsw,
                     sh: fishDict[body].dfinsh });
-  newlist.push({ uri: tail_uri + tfCol + '.png', 
-                  x: fishDict[body].tailx, 
-                  y: fishDict[body].taily, 
-                  sw: fishDict[body].tailsw, 
+  newlist.push({ uri: tail_uri + tfCol + '.png',
+                  x: fishDict[body].tailx,
+                  y: fishDict[body].taily,
+                  sw: fishDict[body].tailsw,
                   sh: fishDict[body].tailsh });
-  newlist.push({ uri: fishDict[body].uri + bodyCol + '.png', 
-                    x: fishDict[body].x, 
-                    y: fishDict[body].y, 
-                    sw: fishDict[body].sw, 
+  newlist.push({ uri: fishDict[body].uri + bodyCol + '.png',
+                    x: fishDict[body].x,
+                    y: fishDict[body].y,
+                    sw: fishDict[body].sw,
                     sh: fishDict[body].sh });
-  newlist.push({ uri: pfin_uri + tfCol + '.png', 
-                    x: fishDict[body].pfinx, 
-                    y: fishDict[body].pfiny, 
-                    sw: fishDict[body].pfinsw, 
+  newlist.push({ uri: pfin_uri + tfCol + '.png',
+                    x: fishDict[body].pfinx,
+                    y: fishDict[body].pfiny,
+                    sw: fishDict[body].pfinsw,
                     sh: fishDict[body].pfinsh });
   return newlist;
 }
@@ -1135,41 +1294,82 @@ function generateImageSpecs() {
 
 var urls = [];
 var count = 0;
-var zip = new JSZip();
-var folder = zip.folder("Fish");
+var zip;
+var folder;
 var total = 0;
+var fishIsReady = false;
 
 const generateOneFish = () => {
-  return new Promise((resolve, reject) => {   
-    drawFish(fishes[count]);
+  return new Promise((resolve, reject) => {
+    fishIsReady = false;
+    let delay = drawFish(fishes[count], false, count);
     setTimeout(function() {
       let url = canvas.toDataURL();
       let base64String = url.replace("data:image/png;base64,", "");
       urls.push(base64String);
-      count ++; 
-      document.getElementById("progress").value = count;
-      console.log(1);
+      count ++;
+      progress2.value = count;
+      progressText.innerHTML = progressStr + ':  ' + String(count) + '/' + String(totalC);
+      // console.log(progress2.value, progress2.max)
       resolve(urls);
-    }, 2000);   
+      fishIsReady = true;
+    }, 50 + delay);
   });
 };
 
 function generateImages() {
+  if (totalC == 0) {
+    let warning = document.getElementById("warn");
+    warning.style.display = "block";
+    return;
+  }
+  initialPreLoadedImages = -1;
+  loadingImages = [];
+  fishes = [];
+  generateImageSpecs();
+  progress1.max = 100;
+  progress1.value = 0;
+  progress2.max = fishes.length;
+  progress2.value = 0;
+  document.getElementById("progressBar").style.display = "block";
+  for (let fishIndex = 0; fishIndex < fishes.length; fishIndex++) {
+    let fish = fishes[fishIndex];
+    for (let partIndex = 0; partIndex < fish.length; partIndex++) {
+      let part = fish[partIndex];
+      let id = getIdFromURL(part.uri);
+      loadImage(id, part.uri);
+    }
+  }
+  progressText.innerHTML = progressStr;
+  checkInterval = setInterval(checkNeededAssets, 20);
+};
+
+function checkNeededAssets() {
+  if (checkInterval < 0) { return; }
+  let ready = checkLoadingImages();
+  if (!ready) { return; }
+  clearInterval(checkInterval);
+  checkInterval = -1;
+  generateLoadedImages();
+};
+
+function generateLoadedImages() {
   count = 0;
   total = 0;
-  fishes = [];
+  fishIsReady = true;
   urls = [];
+  zip = new JSZip();
+  folder = zip.folder("Fish");
   if (totalC == 0) {
     let warning = document.getElementById("warn");
     warning.style.display = "block";
   } else {
-    generateImageSpecs();
+    // generateImageSpecs();
+    progressText.innerHTML = progressStr;
     total = fishes.length;
-    document.getElementById("progress").max = total;
-    document.getElementById("progress").value = 0;
-    document.getElementById("progressBar").style.display = "block";
     let clear = 0;
     let id = setInterval(function() {
+      if (!fishIsReady) { return; }
       generateOneFish().then(urls => {
         if (count == fishes.length) {
           for (let i = 0; i < urls.length; i ++) {
@@ -1179,9 +1379,9 @@ function generateImages() {
               filenum = "0" + filenum;
             }
             let filename = "fish"+ filenum + ".png";
-            folder.file(filename, urls[i], {base64: true}); 
+            folder.file(filename, urls[i], {base64: true});
             if (i == urls.length - 1) {
-              console.log("zip")
+              console.log("zip:", urls.length, "files");
               zip.generateAsync({ type: 'blob' }).then(function (content) {
                 saveAs(content, "Fish.zip");           
               });        
@@ -1194,7 +1394,7 @@ function generateImages() {
           }
         }
       });
-    }, 500);
+    }, 10);
   }
 }
 

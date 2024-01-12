@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Fish Generator</title>
-    <link rel="stylesheet" href="css/style2.css">
+    <link rel="stylesheet" href="css/style.css">
     <link href='https://fonts.googleapis.com/css?family=IBM Plex Mono' rel='stylesheet'>
 </head>
 
-<body onload="init();">
+<body onload="init(2);">
     <div class="heading"> 
         <img class="logo" src="img2/fish.png">
         <h1>Fish Generator</h1>
@@ -33,10 +33,10 @@
             <div id="bodyShapes" class="buttons" style="display: none;">
                 <p><b>Attribute Values</b></p>
                 <div class="attribute-value">
-                    <button id="body1" onclick="addBody1()"><img id="body1img" class="imgOpt" src="img2/body1.png"><p id="body1p">wedge</p></button>               
-                    <button id="body2" onclick="addBody2()"><img class="imgOpt" src="img2/body2.png"><p>long</p></button>
-                    <button id="body3" onclick="addBody3()"><img id="body3img" class="imgOpt" src="img2/body3.png"><p id="body3p">puffer</p></button>
-                    <button id="body4" onclick="addBody4()"><img class="imgOpt" src="img2/body4.png"><p>goldfish</p></button>
+                    <button id="body1" onclick="addBody1()"><img id="body1img" class="imgOptB" src="img2/body1.png"><p id="body1p" class="body1pB">wedge</p></button>
+                    <button id="body2" onclick="addBody2()"><img id="body2img" class="imgOptB" src="img2/body2.png"><p id="body2p" class="body2pB">long</p></button>
+                    <button id="body3" onclick="addBody3()"><img id="body3img" class="imgOptB" src="img2/body3.png"><p id="body3p" class="body3pB">puffer</p></button>
+                    <button id="body4" onclick="addBody4()"><img id="body4img" class="imgOptB" src="img2/body4.png"><p id="body4p" class="body4pB">goldfish</p></button>
                 </div>
             </div>
             <div id="bodyColors" class="buttons" style="display: none;">
@@ -57,7 +57,7 @@
                     <button id="tail1" onclick="addTail1()"><img class="imgOpt" src="img2/tail1.png"><p>triangle</p></button>               
                     <button id="tail2" onclick="addTail2()"><img class="imgOpt" src="img2/tail2.png"><p>mermaid</p></button>
                     <button id="tail3" onclick="addTail3()"><img class="imgOpt" src="img2/tail3.png"><p>shell</p></button>
-                    <button id="tail4" onclick="addTail4()"><img class="imgOpt" id="long" src="img2/tail4.png"><p>long</p></button>
+                    <button id="tail4" onclick="addTail4()"><img class="imgOpt" id="long" class="longB" src="img2/tail4.png"><p>long</p></button>
                 </div>
             </div>
             <div id="dfinShapes" class="buttons" style="display: none;">
@@ -97,10 +97,11 @@
             <canvas width=500 height=300 id="canv"></canvas>
             <div class="generate">
                 <p class="warn" id="warn">You have to choose at least one value for each attribute class!</p>
-                <p class="num" id="num">You are generating 0 images</p>
+                <p class="num" id="progressText">You are generating 0 images</p>
                 <button class="generate_button" onclick="generateImages();" >Generate!</button>
                 <div id="progressBar" style="display:none">
-                    <progress id="progress" value="0" max="0"></progress>
+                    <progress id="progress1" value="0" max="0" style="display:block; margin-bottom:2px;"></progress>
+                    <progress id="progress2" value="0" max="0" style="display:block; margin-top:2px;"></progress>
                 </div>
             </div>
         </div>
@@ -108,6 +109,6 @@
     <script src="external/jquery-3.6.1.min.js"></script>
     <script src="external/FileSaver.js"></script>
     <script src="external/jszip.js"></script>
-    <script src="js/draw_fish2.js"></script>
+    <script src="js/draw_fish.js"></script>
 </body>
 </html>
