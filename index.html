@@ -7,102 +7,196 @@
     <link href='https://fonts.googleapis.com/css?family=IBM Plex Mono' rel='stylesheet'>
 </head>
 
-<body onload="init(1);">
+<body onload="init();">
     <div class="heading"> 
         <img class="logo" src="img/fish.png">
         <h1>Fish Generator</h1>
         <p id="contact">contact</p>
     </div>
     <hr>
-    <main class="row">
-        <div class="description">
-            <p>Please select at least one value for each attribute to generate fish images.</p>
-            <a href="art_version2.html"><button class="choose_art">Switch art style</button></a>
+    <main id="mainContent" class="row">
+        <div id="divMainA" class="row">
+            <div class="description">
+                <p>Please select at least one value for each attribute to generate fish images.</p>
+                <button id="btnSwitchArtStyleA" class="choose_art" onclick="switchArtStyle(2)">Switch art style</button>
+            </div>
+            <div class="vl"></div>
+            <div class="attribute-class">
+                <p><b>Attribute Class</b></p>
+                <button id="btnBodyShapeA" onclick="showBodyShapeOpts();">Body Shape  <span class="att_num" id="spanBodyShapeA">0</span></button>
+                <button id="btnBodyColorA" onclick="showBodyColorOpts();">Body Color  <span class="att_num" id="spanBodyColorA">0</span></button>
+                <button id="btnTailShapeA" onclick="showTailShapeOpts();">Tail Shape  <span class="att_num" id="spanTailShapeA">0</span></button>
+                <button id="btnDorsalFinShapeA" onclick="showDFinShapeOpts();">Dorsal Fin Shape  <span class="att_num" id="spanDorsalFinShapeA">0</span></button>
+                <button id="btnPectoralFinShapeA" onclick="showPFinShapeOpts();">Pectoral Fin Shape  <span class="att_num" id="spanPectoralFinShapeA">0</span></button>
+                <button id="btnTailAndFinColorA" onclick="showTFColorOpts();">Tail & Fin Color  <span class="att_num" id="spanTailAndFinColorA">0</span></button>
+            </div>
+            <div class="attribute-values">
+                <div id="divBodyShapesA" class="buttons" style="display: none;">
+                    <p><b>Attribute Values</b></p>
+                    <div class="attribute-value">
+                        <button id="btnBody1A" onclick="addBody1()"><img id="imgBody1A" class="imgOptA" src="img/body1.png"><p id="pBody1A" class="body1p">triangle</p></button>
+                        <button id="btnBody2A" onclick="addBody2()"><img id="imgBody2A" class="imgBody2A" src="img/body2.png"><p id="pBody2A" class="body2p">long</p></button>
+                        <button id="btnBody3A" onclick="addBody3()"><img id="imgBody3A" class="imgOptA" src="img/body3.png"><p id="pBody3A" class="body3p">puffer</p></button>
+                        <button id="btnBody4A" onclick="addBody4()"><img id="imgBody4A" class="imgOptA" src="img/body4.png"><p id="pBody4A" class="body4p">rectangle</p></button>
+                        <button id="btnBody5A" onclick="addBody5()"><img id="imgBody5A" class="imgBody5A" src="img/body5.png"><p id="pBody5A" class="body5p">sponge</p></button>
+                    </div>
+                </div>
+                <div id="divBodyColorsA" class="buttons" style="display: none;">
+                    <p><b>Attribute Values</b></p>
+                    <div class="attribute-value color">
+                        <button id="btnBodyColor2A" onclick="chooseBBlue()" style="background-color:lightblue"> blue</button>
+                        <button id="btnBodyColor1A" onclick="chooseBRed()" style="background-color:rgb(245, 80, 80)"> red</button>
+                        <button id="btnBodyColor3A" onclick="chooseBGreen()" style="background-color:greenyellow"> green</button>
+                        <button id="btnBodyColor4A" onclick="chooseBOrange()" style="background-color:orange"> orange</button>
+                        <button id="btnBodyColor5A" onclick="chooseBPink()" style="background-color:pink"> pink</button>
+                        <button id="btnBodyColor6A" onclick="chooseBPurple()" style="background-color:violet"> purple</button>
+                        <button id="btnBodyColor7A" onclick="chooseBYellow()" style="background-color:yellow"> yellow</button>
+                    </div>
+                </div>
+                <div id="divTailShapesA" class="buttons" style="display: none;">
+                    <p><b>Attribute Values</b></p>
+                    <div class="attribute-value">
+                        <button id="btnTail1A" onclick="addTail1()"><img class="imgOptA" src="img/tail1.png"><p>triangle</p></button>
+                        <button id="btnTail2A" onclick="addTail2()"><img class="imgOptA" src="img/tail2.png"><p>mermaid</p></button>
+                        <button id="btnTail3A" onclick="addTail3()"><img class="imgOptA" src="img/tail3.png"><p>shell</p></button>
+                        <button id="btnTail4A" onclick="addTail4()"><img class="longImgOptA" src="img/tail4.png"><p>leaf</p></button>
+                    </div>
+                </div>
+                <div id="divDorsalFinShapesA" class="buttons" style="display: none;">
+                    <p><b>Attribute Values</b></p>
+                    <div class="attribute-value">
+                        <button id="btnDorsalFin1A" onclick="addDfin1()"><img class="imgOptA" src="img/dfin1.png"><p>shark</p></button>
+                        <button id="btnDorsalFin2A" onclick="addDfin2()"><img class="imgOptA" src="img/dfin2.png"><p>petal</p></button>
+                        <button id="btnDorsalFin3A" onclick="addDfin3()"><img class="imgOptA" src="img/dfin3.png"><p>spikes</p></button>
+                        <button id="btnDorsalFin4A" onclick="addDfin4()"><img class="imgOptA" src="img/dfin4.png"><p>sail</p></button>
+                        <button id="btnDorsalFin5A" onclick="addDfin5()"><img class="imgOptA" src="img/dfin5.png"><p>angelfish</p></button>
+                    </div>
+                </div>
+                <div id="divPectoralFinShapesA" class="buttons" style="display: none;">
+                    <p><b>Attribute Values</b></p>
+                    <div class="attribute-value">
+                        <button id="btnPectoralFin1A" onclick="addPfin1()"><img class="imgOptA" src="img/pfin1.png"><p>shark</p></button>
+                        <button id="btnPectoralFin2A" onclick="addPfin2()"><img class="imgOptA" src="img/pfin2.png"><p>angelfish</p></button>
+                        <button id="btnPectoralFin3A" onclick="addPfin3()"><img class="imgOptA" src="img/pfin3.png"><p>petal</p></button>
+                        <button id="btnPectoralFin4A" onclick="addPfin4()"><img class="imgOptA" src="img/pfin4.png"><p>sail</p></button>
+                    </div>
+                </div>
+                <div id="divTailAndFinColorsA" class="buttons" style="display: none;">
+                    <p><b>Attribute Values</b></p>
+                    <div class="attribute-value color">
+                        <button id="btnTailAndFinColor2A" onclick="chooseTBlue()" style="background-color:lightblue"> blue</button>
+                        <button id="btnTailAndFinColor1A" onclick="chooseTRed()" style="background-color:rgb(245, 80, 80)"> red</button>
+                        <button id="btnTailAndFinColor3A" onclick="chooseTGreen()" style="background-color:greenyellow"> green</button>
+                        <button id="btnTailAndFinColor4A" onclick="chooseTOrange()" style="background-color:orange"> orange</button>
+                        <button id="btnTailAndFinColor5A" onclick="chooseTPink()" style="background-color:pink"> pink</button>
+                        <button id="btnTailAndFinColor6A" onclick="chooseTPurple()" style="background-color:violet"> purple</button>
+                        <button id="btnTailAndFinColor7A" onclick="chooseTYellow()" style="background-color:yellow"> yellow</button>
+                    </div>
+                </div>
+            </div>
+            <div class="canvas">
+                <p><b>Canvas Preview</b></p>
+                <canvas width=500 height=300 id="canvasA"></canvas>
+                <div class="generate">
+                    <p id="pWarnA" class="warn">.</p>
+                    <p id="pProgressTextA" class="num">You are generating 0 images</p>
+                    <button id="btnGenerateA" class="generate_button" onclick="generateImages();" >Generate!</button>
+                    <div id="divProgressBarA" style="display:none">
+                        <progress id="progress1A" value="0" max="0" style="display:block; margin-bottom:2px;"></progress>
+                        <progress id="progress2A" value="0" max="0" style="display:block; margin-top:2px;"></progress>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="vl"></div>
-        <div class="attribute-class"> 
-            <p><b>Attribute Class</b></p>
-            <button id="bs" onclick="showBodyShapeOpts();">Body Shape  <span class="att_num" id="nbs">0</span></button>                
-            <button id="bc" onclick="showBodyColorOpts();">Body Color  <span class="att_num" id="nbc">0</span></button>                      
-            <button id="ts" onclick="showTailShapeOpts();">Tail Shape  <span class="att_num" id="nts">0</span></button>
-            <button id="ds" onclick="showDFinShapeOpts();">Dorsal Fin Shape  <span class="att_num" id="nds">0</span></button>
-            <button id="ps" onclick="showPFinShapeOpts();">Pectoral Fin Shape  <span class="att_num" id="nps">0</span></button>
-            <button id="tc" onclick="showTFColorOpts();">Tail & Fin Color  <span class="att_num" id="ntfc">0</span></button>
-        </div>
-        <div class="attribute-values"> 
-            <div id="bodyShapes" class="buttons" style="display: none;">
-                <p><b>Attribute Values</b></p>
-                <div class="attribute-value">
-                    <button id="body1" onclick="addBody1()"><img id="body1img" class="imgOpt" src="img/body1.png"><p id="body1p" class="body1p">triangle</p></button>
-                    <button id="body2" onclick="addBody2()"><img id="body2img" class="body2img" src="img/body2.png"><p id="body2p" class="body2p">long</p></button>
-                    <button id="body3" onclick="addBody3()"><img id="body3img" class="imgOpt" src="img/body3.png"><p id="body3p" class="body3p">puffer</p></button>
-                    <button id="body4" onclick="addBody4()"><img id="body4img" class="imgOpt" src="img/body4.png"><p id="body4p" class="body4p">rectangle</p></button>
-                    <button id="body5" onclick="addBody5()"><img id="body5img" class="body5img" src="img/body5.png"><p id="body5p" class="body5p">sponge</p></button>
+        <div id="divMainB" class="row" style="display:none;">
+            <div class="description">
+                <p>Please select at least one value for each attribute to generate fish images.</p>
+                <button id="btnSwitchArtStyleB" class="choose_art" onclick="switchArtStyle(1)">Switch art style</button>
+            </div>
+            <div class="vl"></div>
+            <div class="attribute-class">
+                <p><b>Attribute Class</b></p>
+                <button id="btnBodyShapeB" onclick="showBodyShapeOpts();">Body Shape  <span class="att_num" id="spanBodyShapeB">0</span></button>
+                <button id="btnBodyColorB" onclick="showBodyColorOpts();">Body Color  <span class="att_num" id="spanBodyColorB">0</span></button>
+                <button id="btnTailShapeB" onclick="showTailShapeOpts();">Tail Shape  <span class="att_num" id="spanTailShapeB">0</span></button>
+                <button id="btnDorsalFinShapeB" onclick="showDFinShapeOpts();">Dorsal Fin Shape  <span class="att_num" id="spanDorsalFinShapeB">0</span></button>
+                <button id="btnPectoralFinShapeB" onclick="showPFinShapeOpts();">Pectoral Fin Shape  <span class="att_num" id="spanPectoralFinShapeB">0</span></button>
+                <button id="btnTailAndFinColorB" onclick="showTFColorOpts();">Tail & Fin Color  <span class="att_num" id="spanTailAndFinColorB">0</span></button>
+            </div>
+            <div class="attribute-values">
+                <div id="divBodyShapesB" class="buttons" style="display: none;">
+                    <p><b>Attribute Values</b></p>
+                    <div class="attribute-value">
+                        <button id="btnBody1B" onclick="addBody1()"><img id="imgBody1B" class="imgOptB" src="img2/body1.png"><p id="pBody1B" class="body1pB">wedge</p></button>
+                        <button id="btnBody2B" onclick="addBody2()"><img id="imgBody2B" class="imgOptB" src="img2/body2.png"><p id="pBody2B" class="body2pB">long</p></button>
+                        <button id="btnBody3B" onclick="addBody3()"><img id="imgBody3B" class="imgOptB" src="img2/body3.png"><p id="pBody3B" class="body3pB">puffer</p></button>
+                        <button id="btnBody4B" onclick="addBody4()"><img id="imgBody4B" class="imgOptB" src="img2/body4.png"><p id="pBody4B" class="body4pB">goldfish</p></button>
+                    </div>
+                </div>
+                <div id="divBodyColorsB" class="buttons" style="display: none;">
+                    <p><b>Attribute Values</b></p>
+                    <div class="attribute-value color">
+                        <button id="btnBodyColor2B" onclick="chooseBBlue()" style="background-color:lightblue"> blue</button>
+                        <button id="btnBodyColor1B" onclick="chooseBRed()" style="background-color:rgb(245, 80, 80)"> red</button>
+                        <button id="btnBodyColor3B" onclick="chooseBGreen()" style="background-color:greenyellow"> green</button>
+                        <button id="btnBodyColor4B" onclick="chooseBOrange()" style="background-color:orange"> orange</button>
+                        <button id="btnBodyColor5B" onclick="chooseBPink()" style="background-color:pink"> pink</button>
+                        <button id="btnBodyColor6B" onclick="chooseBPurple()" style="background-color:violet"> purple</button>
+                        <button id="btnBodyColor7B" onclick="chooseBYellow()" style="background-color:yellow"> yellow</button>
+                    </div>
+                </div>
+                <div id="divTailShapesB" class="buttons" style="display: none;">
+                    <p><b>Attribute Values</b></p>
+                    <div class="attribute-value">
+                        <button id="btnTail1B" onclick="addTail1()"><img class="imgOptB" src="img2/tail1.png"><p>triangle</p></button>
+                        <button id="btnTail2B" onclick="addTail2()"><img class="imgOptB" src="img2/tail2.png"><p>mermaid</p></button>
+                        <button id="btnTail3B" onclick="addTail3()"><img class="imgOptB" src="img2/tail3.png"><p>shell</p></button>
+                        <button id="btnTail4B" onclick="addTail4()"><img class="longImgOptB" src="img2/tail4.png"><p>long</p></button>
+                    </div>
+                </div>
+                <div id="divDorsalFinShapesB" class="buttons" style="display: none;">
+                    <p><b>Attribute Values</b></p>
+                    <div class="attribute-value">
+                        <button id="btnDorsalFin1B" onclick="addDfin1()"><img class="imgOptB" src="img2/dfin1.png"><p>shark</p></button>
+                        <button id="btnDorsalFin2B" onclick="addDfin2()"><img class="imgOptB" src="img2/dfin2.png"><p>petal</p></button>
+                        <button id="btnDorsalFin3B" onclick="addDfin3()"><img class="imgOptB" src="img2/dfin3.png"><p>spikes</p></button>
+                        <button id="btnDorsalFin4B" onclick="addDfin4()"><img class="imgOptB" src="img2/dfin4.png"><p>sail</p></button>
+                        <button id="btnDorsalFin5B" onclick="addDfin5()"><img class="imgOptB" src="img2/dfin5.png"><p>angelfish</p></button>
+                    </div>
+                </div>
+                <div id="divPectoralFinShapesB" class="buttons" style="display: none;">
+                    <p><b>Attribute Values</b></p>
+                    <div class="attribute-value">
+                        <button id="btnPectoralFin1B" onclick="addPfin1()"><img class="imgOptB" src="img2/pfin1.png"><p>shark</p></button>
+                        <button id="btnPectoralFin2B" onclick="addPfin2()"><img class="imgOptB" src="img2/pfin2.png"><p>angelfish</p></button>
+                        <button id="btnPectoralFin3B" onclick="addPfin3()"><img class="imgOptB" src="img2/pfin3.png"><p>petal</p></button>
+                        <button id="btnPectoralFin4B" onclick="addPfin4()"><img class="imgOptB" src="img2/pfin4.png"><p>sail</p></button>
+                    </div>
+                </div>
+                <div id="divTailAndFinColorsB" class="buttons" style="display: none;">
+                    <p><b>Attribute Values</b></p>
+                    <div class="attribute-value color">
+                        <button id="btnTailAndFinColor2B" onclick="chooseTBlue()" style="background-color:lightblue"> blue</button>
+                        <button id="btnTailAndFinColor1B" onclick="chooseTRed()" style="background-color:rgb(245, 80, 80)"> red</button>
+                        <button id="btnTailAndFinColor3B" onclick="chooseTGreen()" style="background-color:greenyellow"> green</button>
+                        <button id="btnTailAndFinColor4B" onclick="chooseTOrange()" style="background-color:orange"> orange</button>
+                        <button id="btnTailAndFinColor5B" onclick="chooseTPink()" style="background-color:pink"> pink</button>
+                        <button id="btnTailAndFinColor6B" onclick="chooseTPurple()" style="background-color:violet"> purple</button>
+                        <button id="btnTailAndFinColor7B" onclick="chooseTYellow()" style="background-color:yellow"> yellow</button>
+                    </div>
                 </div>
             </div>
-            <div id="bodyColors" class="buttons" style="display: none;">
-                <p><b>Attribute Values</b></p>
-                <div class="attribute-value color">
-                    <button id="bodyCol2" onclick="chooseBBlue()" style="background-color:lightblue"> blue</button>
-                    <button id="bodyCol1" onclick="chooseBRed()" style="background-color:rgb(245, 80, 80)"> red</button>              
-                    <button id="bodyCol3" onclick="chooseBGreen()" style="background-color:greenyellow"> green</button>
-                    <button id="bodyCol4" onclick="chooseBOrange()" style="background-color:orange"> orange</button>
-                    <button id="bodyCol5" onclick="chooseBPink()" style="background-color:pink"> pink</button>
-                    <button id="bodyCol6" onclick="chooseBPurple()" style="background-color:violet"> purple</button>
-                    <button id="bodyCol7" onclick="chooseBYellow()" style="background-color:yellow"> yellow</button>
-                </div>
-            </div>
-            <div id="tailShapes" class="buttons" style="display: none;">
-                <p><b>Attribute Values</b></p>
-                <div class="attribute-value">
-                    <button id="tail1" onclick="addTail1()"><img class="imgOpt" src="img/tail1.png"><p>triangle</p></button>               
-                    <button id="tail2" onclick="addTail2()"><img class="imgOpt" src="img/tail2.png"><p>mermaid</p></button>
-                    <button id="tail3" onclick="addTail3()"><img class="imgOpt" src="img/tail3.png"><p>shell</p></button>
-                    <button id="tail4" onclick="addTail4()"><img class="imgOpt" id="long" class="long" src="img/tail4.png"><p>leaf</p></button>
-                </div>
-            </div>
-            <div id="dfinShapes" class="buttons" style="display: none;">
-                <p><b>Attribute Values</b></p>
-                <div class="attribute-value">
-                    <button id="dfin1" onclick="addDfin1()"><img class="imgOpt" src="img/dfin1.png"><p>shark</p></button>               
-                    <button id="dfin2" onclick="addDfin2()"><img class="imgOpt" src="img/dfin2.png"><p>petal</p></button>
-                    <button id="dfin3" onclick="addDfin3()"><img class="imgOpt" src="img/dfin3.png"><p>spikes</p></button>
-                    <button id="dfin4" onclick="addDfin4()"><img class="imgOpt" src="img/dfin4.png"><p>sail</p></button>
-                    <button id="dfin5" onclick="addDfin5()"><img class="imgOpt" src="img/dfin5.png"><p>angelfish</p></button>
-                </div>
-            </div>
-            <div id="pfinShapes" class="buttons" style="display: none;">
-                <p><b>Attribute Values</b></p>
-                <div class="attribute-value">
-                    <button id="pfin1" onclick="addPfin1()"><img class="imgOpt" src="img/pfin1.png"><p>shark</p></button>               
-                    <button id="pfin2" onclick="addPfin2()"><img class="imgOpt" src="img/pfin2.png"><p>angelfish</p></button>
-                    <button id="pfin3" onclick="addPfin3()"><img class="imgOpt" src="img/pfin3.png"><p>petal</p></button>
-                    <button id="pfin4" onclick="addPfin4()"><img class="imgOpt" src="img/pfin4.png"><p>sail</p></button>
-                </div>
-            </div>
-            <div id="TFColors" class="buttons" style="display: none;">
-                <p><b>Attribute Values</b></p>
-                <div class="attribute-value color">
-                    <button id="tfCol2" onclick="chooseTBlue()" style="background-color:lightblue"> blue</button>
-                    <button id="tfCol1" onclick="chooseTRed()" style="background-color:rgb(245, 80, 80)"> red</button>              
-                    <button id="tfCol3" onclick="chooseTGreen()" style="background-color:greenyellow"> green</button>
-                    <button id="tfCol4" onclick="chooseTOrange()" style="background-color:orange"> orange</button>
-                    <button id="tfCol5" onclick="chooseTPink()" style="background-color:pink"> pink</button>
-                    <button id="tfCol6" onclick="chooseTPurple()" style="background-color:violet"> purple</button>
-                    <button id="tfCol7" onclick="chooseTYellow()" style="background-color:yellow"> yellow</button>
-                </div>
-            </div>
-        </div>
-        <div class="canvas"> 
-            <p><b>Canvas Preview</b></p>
-            <canvas width=500 height=300 id="canv"></canvas>
-            <div class="generate">
-                <p class="warn" id="warn">You have to choose at least one value for each attribute class!</p>
-                <p class="num" id="progressText">You are generating 0 images</p>
-                <button class="generate_button" onclick="generateImages();" >Generate!</button>
-                <div id="progressBar" style="display:none">
-                    <progress id="progress1" value="0" max="0" style="display:block; margin-bottom:2px;"></progress>
-                    <progress id="progress2" value="0" max="0" style="display:block; margin-top:2px;"></progress>
+            <div class="canvas">
+                <p><b>Canvas Preview</b></p>
+                <canvas width=500 height=300 id="canvasB"></canvas>
+                <div class="generate">
+                    <p id="pWarnB" class="warn">.</p>
+                    <p id="pProgressTextB" class="num">You are generating 0 images</p>
+                    <button id="btnGenerateB" class="generate_button" onclick="generateImages();" >Generate!</button>
+                    <div id="divProgressBarB" style="display:none">
+                        <progress id="progress1B" value="0" max="0" style="display:block; margin-bottom:2px;"></progress>
+                        <progress id="progress2B" value="0" max="0" style="display:block; margin-top:2px;"></progress>
+                    </div>
                 </div>
             </div>
         </div>
