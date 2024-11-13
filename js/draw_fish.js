@@ -1825,15 +1825,42 @@ function generateLoadedImages() {
     let id = setInterval(function() {
       if (!fishIsReady) { return; }
       generateOneFish().then(urls => {
+        var fish_data = {
+          'rows': []
+        }
         if (count == fishes.length) {
           for (let i = 0; i < urls.length; i ++) {
-            let filename = "fish" + getFileNumberString(i + 1) + ".png";
+            cur_fish_data = []
+            for(let j=0; j<fishes[i].length; j++) {
+              let features = parseFeature(fishes[i][j].uri)
+              cur_fish_data.push(...features)
+            }
+            var n = getFileNumberString(i+1)
+            cur_fish_data.push(n)
+            // fish_data['rows'].push(cur_fish_data)
+            let filename = "fish" + n + ".png";
             folder.file(filename, urls[i], {base64: true});
+            cur_fish_data_parsed = parseFishData(cur_fish_data)
+            //crop the image
+            // cropped_uri = cropURI(urls[i])
+            // var cur_row = [cropped_uri, cur_fish_data_parsed] //'data:image/png;base64,' +
+            var cur_row = ['data:image/png;base64,' + urls[i], cur_fish_data_parsed]
+            fish_data['rows'].push(cur_row)
             if (i == urls.length - 1) {
               console.log("zip:", urls.length, "files");
-              zip.generateAsync({ type: 'blob' }).then(function (content) {
-                saveAs(content, "Fish.zip");           
-              });        
+              fetch('fish_template.html')
+                  .then(response => response.text())
+                  .then(template => {
+                    var html_content = populateTemplateRows(template, fish_data)
+                    // zip.file("fish_flash_cards.html", html_content)
+                    folder.file("fish_flash_cards.html", html_content)
+                    zip.generateAsync({ type: 'blob' }).then(function (content) {
+                      saveAs(content, "Fish.zip");
+                    });
+                  })
+              // zip.generateAsync({ type: 'blob' }).then(function (content) {
+              //   saveAs(content, "Fish.zip");
+              // });
               clear = 1;
             }
             if (clear == 1) {
@@ -1847,6 +1874,125 @@ function generateLoadedImages() {
       });
     }, 10);
   }
+}
+
+function parseFishData(fish_data) {
+  parsed = ''
+  corrected_order = [0, 0, 0, 0, 0, 0, 0]
+  corrected_order[3] = fish_data[0]
+  corrected_order[5] = fish_data[1]
+  corrected_order[2] = fish_data[2]
+  corrected_order[0] = fish_data[3]
+  corrected_order[1] = fish_data[4]
+  corrected_order[4] = fish_data[5]
+  corrected_order[6] = fish_data[6]
+  parsed += '<p style="padding: 40px 0 0 0"> ' + 'Body Shape: ' + corrected_order[0] + '</p>'
+  parsed += 'Body Color: ' + corrected_order[1] + '<p/>'
+  parsed += 'Tail Shape: ' + corrected_order[2] + '<p/>'
+  parsed += 'Dorsal Fin Shape: ' + corrected_order[3] + '<p/>'
+  parsed += 'Pectoral Fin Shape: ' + corrected_order[4] + '<p/>'
+  parsed += 'Tail & Fin Color: ' + corrected_order[5] + '<p/>'
+  parsed += '<p align="right" style="padding: 20px 15px 10px 0">' + corrected_order[6] + '</p>'
+  return parsed
+}
+function parseFeature(feature) {
+  //dorsal fin shape, tail & fin color, tail shape, body shape, body color, pectoral fin shape
+  var feature_begin_idx = feature.indexOf('/', feature.indexOf('/')+1)+1
+  // var features = feature_lookup[feature.substring(feature_begin_idx, feature.indexOf('.'))]
+  features = []
+  filename = feature.substring(feature_begin_idx, feature.indexOf('.'))
+  if(filename.substring(0, 1) === 'd') { //dorsal fin shape
+    if(filename.substring(4,5) === '1') {
+      features.push('Shark')
+    }
+    else if (filename.substring(4,5) === '2') {
+      features.push('Petal')
+    }
+    else if (filename.substring(4,5) === '3') {
+      features.push('Spikes')
+    }
+    else if (filename.substring(4,5) === '4') {
+      features.push('Sail')
+    }
+    else {
+      features.push('Angelfish')
+    }
+    features.push(filename.substring(5)) //add the tail & fin color
+  }
+
+  else if (filename.substring(0, 1) === 't') { //tail shape
+    if(filename.substring(4,5) === '1') {
+      features.push('Triangle')
+    }
+    else if(filename.substring(4,5) === '2') {
+      features.push('Mermaid')
+    }
+    else if(filename.substring(4,5) === '3') {
+      features.push('Shell')
+    }
+    else {
+      features.push('Leaf')
+    }
+  }
+
+  else if(filename.substring(0,1) === 'b') { //body shape, body color
+    if(filename.substring(4,5) === '1') {
+      features.push('Triangle')
+    }
+    else if(filename.substring(4,5) === '2') {
+      features.push('Long')
+    }
+    else if(filename.substring(4,5) === '3') {
+      features.push('Puffer')
+    }
+    else if(filename.substring(4,5) === '4') {
+      features.push('Rectangle')
+    }
+    else {
+      features.push('Sponge')
+    }
+    features.push(filename.substring(5)) //add the body color
+  }
+
+  else { //pectoral fin shape
+    if(filename.substring(4,5) === '1') {
+      features.push('Shark')
+    }
+    else if(filename.substring(4,5) === '2') {
+      features.push('Angelfish')
+    }
+    else if(filename.substring(4,5) === '3') {
+      features.push('Petal')
+    }
+    else {
+      features.push('Sail')
+    }
+  }
+
+  return features
+}
+
+function genTemplateRows(rows) {
+  return rows.map(row =>
+      `<div class = "print_div"> 
+        <table>
+         <tr style="height:250px">
+          <td> <div class="crop"><img src="${row[0]}" alt="Image"></div></td>
+          <td><div class="features">${row[1]}</div></td>
+        </tr>
+       </table> <p/> </div>`
+  ).join('');
+
+// .cropped-opf{
+//     width: 150px;
+//     height: 150px;
+//     object-fit: cover;
+//     object-position: 25% 25%;}
+}
+
+function populateTemplateRows(template, fish_data) {
+  var tableRows = genTemplateRows(fish_data.rows);
+  return template.replace(/{{tableRows}}/g, tableRows);
 }
 
 /*

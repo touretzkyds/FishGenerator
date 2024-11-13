@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fish Flash Cards</title>
+  <style>
+    @media print {
+      body {
+        zoom: 95%;
+      }
+    }
+
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+
+    table {
+      width: 764px
+    }
+
+    td {
+      /*width: 377px;*/
+      height: 250px;
+      width: 50%
+    }
+
+    tr {
+      height: 200px;
+    }
+
+    .features { margin-left: 50px; }
+
+    .print_div {
+      margin: 0px;
+      padding: 0px;
+      width: 500px; /* width: 7in; */
+      height: 350px; /* or height: 9.5in; */
+      clear: both;
+      /*page-break-after: always;*/
+    }
+
+    .crop {
+      width: 377px; /*430 fits long*/
+      height: 250px;
+      overflow: hidden;
+    }
+
+    .crop img {
+      object-fit: cover;
+      object-position: 0 -30px;
+      width: 390px; /*450*/
+      height: 280px;  /*305*/
+      /*margin: -50px 0 0 0px;*/
+    }
+  </style>
+</head>
+<body>
+{{tableRows}}
+</body>
+</html>
